@@ -49,4 +49,8 @@ public class WebConfig implements WebMvcConfigurer    {
 		TilesViewResolver viewResolver = new TilesViewResolver();
 		registry.viewResolver(viewResolver);
 	}
+	/*@Bean
+	public HttpSessionEventPublisher httpSessionEventPublisher() {
+	    return new HttpSessionEventPublisher();
+	}*/
 }

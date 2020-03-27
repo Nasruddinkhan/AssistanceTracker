@@ -17,6 +17,10 @@
 				<li><a
 					href="${pageContext.request.contextPath}/opp/newstaffing.do"><i
 						class="fa fa-gg-circle text-red"></i> Needy </a></li>
+						
+							<li><a
+					href="${pageContext.request.contextPath}/mst/allmaster.do"><i
+						class="fa fa fa-medium	 text-green"></i>Masters </a></li>
 			</ul>
 		</li>
 
