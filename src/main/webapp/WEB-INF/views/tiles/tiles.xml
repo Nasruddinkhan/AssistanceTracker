@@ -18,6 +18,10 @@
        <put-attribute name="title" value="Welcome" />  
        <put-attribute name="body" value="/WEB-INF/views/pages/master.jsp" />  
    </definition> 
+   <definition name="member" extends="base-definition">  
+       <put-attribute name="title" value="Welcome" />  
+       <put-attribute name="body" value="/WEB-INF/views/pages/member/member.jsp" />  
+   </definition> 
    
    
 </tiles-definitions>

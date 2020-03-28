@@ -12,7 +12,7 @@
 		</a>
 			<ul class="treeview-menu ">
 				<li><a
-					href="${pageContext.request.contextPath}/opp/viewdemand.do"><i
+					href="${pageContext.request.contextPath}/member/showmemberpage.do"><i
 						class="fa fa-street-view text-yellow"></i> Member</a></li>
 				<li><a
 					href="${pageContext.request.contextPath}/opp/newstaffing.do"><i
