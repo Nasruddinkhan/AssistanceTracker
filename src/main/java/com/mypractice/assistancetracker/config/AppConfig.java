@@ -24,6 +24,7 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.mypractice.assistancetracker.model.Authorities;
+import com.mypractice.assistancetracker.model.Country;
 import com.mypractice.assistancetracker.model.MstCode;
 import com.mypractice.assistancetracker.model.PersistentLogins;
 import com.mypractice.assistancetracker.model.User;
@@ -33,6 +34,7 @@ import com.mypractice.assistancetracker.model.User;
 @ComponentScans(value = { @ComponentScan("com.mypractice.assistancetracker.dao"),
 		@ComponentScan("com.mypractice.assistancetracker.daoimpl"),
 		@ComponentScan("com.mypractice.assistancetracker.serviceimpl"),
+		@ComponentScan("com.mypractice.assistancetracker.exception"),
     @ComponentScan("com.mypractice.assistancetracker.service")})
 public class AppConfig {
 
@@ -58,7 +60,7 @@ public class AppConfig {
     props.put(C3P0_TIMEOUT, env.getProperty("hibernate.c3p0.timeout"));
     props.put(C3P0_MAX_STATEMENTS, env.getProperty("hibernate.c3p0.max_statements"));
     factoryBean.setHibernateProperties(props);
-    factoryBean.setAnnotatedClasses(User.class, Authorities.class, PersistentLogins.class, MstCode.class);
+    factoryBean.setAnnotatedClasses(User.class, Authorities.class, PersistentLogins.class, MstCode.class, Country.class);
     return factoryBean;
   }
 
