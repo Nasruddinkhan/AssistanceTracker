@@ -15,4 +15,5 @@ import com.mypractice.assistancetracker.model.MstCode;
  */
 public interface MstCodeService {
 	public List<MstCode>  getAllMaster();
+
 }

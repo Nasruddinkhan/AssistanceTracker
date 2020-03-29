@@ -15,4 +15,12 @@ import com.mypractice.assistancetracker.dto.CountryDTO;
  */
 public interface CountryService {
 	List<CountryDTO> findAllCountry();
+	void addCountry(CountryDTO countryDTO) throws Exception;
+	Integer deleteCountry(String countryCode);
+	/**
+	 * @param countryCode
+	 * @return
+	 * @throws Exception 
+	 */
+	CountryDTO findCountry(String countryCode) throws Exception;
 }

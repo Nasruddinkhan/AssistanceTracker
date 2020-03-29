@@ -14,46 +14,72 @@
 			</div>
 		</div>
 		<div class="row">
-			<div class="col-sm-5">
-				<div class="box-body">
-					<div class="form-group">
-						<label for="exampleInputEmail1">Country Code</label> <input
-							type="text" class="form-control" id="exampleInputEmail1"
-							placeholder="Enter email">
+			<form:form method="POST"
+				action="${pageContext.request.contextPath}/mst/country.do"
+				modelAttribute="country">
+				<div class="col-sm-12">
+					<div class="box-body">
+						<div class="form-group col-sm-6">
+							<label for="Country Code">ALpha 3 Digit Country Code</label>
+							<c:choose>
+								<c:when test="${not empty country.countryCode}">
+									<form:input type="text" class="form-control" path="countryCode" readonly="true"/>
+									<form:hidden  class="form-control" path="isNew"  value="false"/>
+									
+								</c:when>
+								<c:otherwise>
+									<form:input type="text" class="form-control" path="countryCode" />
+									<form:hidden  class="form-control" path="isNew" value="true"/>
+									
+								</c:otherwise>
+							</c:choose>
+							<form:errors path="countryCode" cssClass="error" />
+						</div>
+						<div class="form-group col-sm-6">
+							<label for="exampleInputPassword1">Country Name</label>
+							<form:input type="text" path="countryName" class="form-control" />
+							<form:errors path="countryName" cssClass="error" />
+						</div>
 					</div>
-					<div class="form-group">
-						<label for="exampleInputPassword1">Country Name</label> <input
-							type="text" class="form-control" id="exampleInputPassword1"
-							placeholder="Password">
+					<div class="box-body">
+						<div class="form-group col-sm-6">
+							<label for="Country Code">ALpha 2 Code</label>
+							<form:input type="text" class="form-control" path="alpha2Code" />
+							<form:errors path="alpha2Code" cssClass="error" />
+						</div>
+						<div class="form-group col-sm-6">
+							<label for="exampleInputPassword1">Numeric Code</label>
+							<form:input type="text" path="numbericCode" class="form-control" />
+							<form:errors path="numbericCode" cssClass="error" />
+						</div>
+					</div>
+					<div class="box-footer">
+						<div class="col-sm-12 col-sm-offset-5">
+							<button type="submit" class="btn btn-primary">
+							<c:choose>
+								<c:when test="${not empty country.countryCode}">
+									Update
+								</c:when>
+								<c:otherwise>Save</c:otherwise>
+							</c:choose>
+							</button>
+						</div>
 					</div>
 				</div>
-				<div class="box-footer">
-					<button type="submit" class="btn btn-primary">Submit</button>
-				</div>
-			</div>
+			</form:form>
 		</div>
+		<c:if test="${not empty msg}">
+			<div class="alert alert-${css} alert-dismissible hideMe"  id='hideMe' role="alert"
+				style="text-align: center;">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong class="hideMe">${msg}</strong>
+			</div>
+		</c:if>
 	</div>
-	<%-- 	<c:if test="${not empty countries}">
-		<div class="box box-success">
-			<div class="box-header with-border">
-				<h3 class="box-title"></h3>
-				<div class="box-tools pull-center">
-					<button type="button" class="btn btn-sm btn-primary btn-box-tool">
-						<i class="fa fa-plus" style="color: white"></i>
-					</button>
-					<button type="button" class="btn btn-sm btn-info btn-box-tool">
-						<i class="fa fa-edit" style="color: white"></i>
-					</button>
-					<button type="button" class="btn btn-sm btn-danger btn-box-tool">
-						<i class="fa fa-trash" style="color: white"></i>
-					</button>
-				</div>
-			</div>
-		</div>
-	</c:if> --%>
-	<!-- </section> -->
 	<c:if test="${not empty countries}">
-		<!-- <section class="content"> -->
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="box">
@@ -62,11 +88,14 @@
 					</div>
 					<!-- /.box-header -->
 					<div class="box-body">
-						<table id="example1" class="table table-bordered table-striped">
+						<table id="example1"
+							class="table table-sm table-bordered table-striped">
 							<thead>
 								<tr>
-									<th>Country ID</th>
+									<th>Country Code</th>
 									<th>Country Name</th>
+									<th>Alpha 2 Code</th>
+									<th>Numeric Code</th>
 									<th>Action</th>
 								</tr>
 							</thead>
@@ -75,25 +104,24 @@
 									<tr>
 										<td>${count.countryCode}</td>
 										<td>${count.countryName}</td>
+										<td>${count.alpha2Code}</td>
+										<td>${count.numbericCode}</td>
 										<td><div class="box-tools pull-center">
-												<button type="button"
-													class="btn btn-sm btn-primary btn-box-tool">
-													<i class="fa fa-plus" style="color: white"></i>
-												</button>
-												<button type="button"
-													class="btn btn-sm btn-info btn-box-tool">
-													<i class="fa fa-edit" style="color: white"></i>
-												</button>
-												<button type="button"
-													class="btn btn-sm btn-danger btn-box-tool">
-													<i class="fa fa-trash" style="color: white"></i>
-												</button>
+												<a
+													href="${pageContext.request.contextPath}/mst/editCountry/${count.countryCode}.do"><button
+														type="button" class="btn btn-sm btn-info btn-box-tool">
+														<i class="fa fa-edit" style="color: white"></i>
+													</button> </a> <a
+													href="${pageContext.request.contextPath}/mst/country/${count.countryCode}.do"><button
+														type="button" class="btn btn-sm btn-danger btn-box-tool">
+
+														<i class="fa fa-trash" style="color: white"></i>
+													</button> </a>
+
 											</div></td>
 									</tr>
 								</c:forEach>
-
 							</tbody>
-
 						</table>
 					</div>
 				</div>

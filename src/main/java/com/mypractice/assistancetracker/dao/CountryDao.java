@@ -15,4 +15,21 @@ import com.mypractice.assistancetracker.model.Country;
  */
 public interface CountryDao {
 	public List<Country> findAllCountry();
+	/**
+	 * @param country
+	 */
+	void addCountry(Country country);
+	/**
+	 * @param country
+	 */
+	void deleteCountry(Country country);
+	/**
+	 * @param countryCode
+	 * @return
+	 */
+	public Country findByCountry(String countryCode);
+	/**
+	 * @param countryCode
+	 */
+	public Integer deleteCountryByCode(String countryCode);
 }

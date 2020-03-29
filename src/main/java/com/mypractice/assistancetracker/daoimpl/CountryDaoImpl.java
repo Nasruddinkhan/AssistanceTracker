@@ -26,5 +26,25 @@ public class CountryDaoImpl implements CountryDao {
 		// TODO Auto-generated method stub
 		return sessionFactory.getCurrentSession().createQuery(FIND_ALL_COUNTRY, Country.class).getResultList();
 	}
-
+	@Override
+	public void addCountry(Country country) {
+		// TODO Auto-generated method stub
+		 sessionFactory.getCurrentSession().saveOrUpdate(country);
+	}
+	@Override
+	public void deleteCountry(Country country) {
+		// TODO Auto-generated method stub
+		sessionFactory.getCurrentSession().delete(country);
+	}
+	@Override
+	public Country findByCountry(String countryCode) {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().load(Country.class,countryCode);
+	}
+	@Override
+	public Integer deleteCountryByCode(String countryCode) {
+		// TODO Auto-generated method stub
+		return sessionFactory.getCurrentSession().createQuery("delete from Country where countryCode=:COUNTRYCODE ")
+				.setParameter("COUNTRYCODE", countryCode).executeUpdate();
+	}
 }

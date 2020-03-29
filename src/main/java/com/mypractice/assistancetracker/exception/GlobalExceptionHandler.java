@@ -24,7 +24,7 @@ import com.mypractice.assistancetracker.util.CommonUtils;
 public class GlobalExceptionHandler {
 	@ExceptionHandler(Exception.class)
 	public final ModelAndView globleExcpetionHandler(HttpServletRequest req, Exception ex) throws Exception {
-		//ex.printStackTrace();
+		ex.printStackTrace();
 		if (AnnotationUtils.findAnnotation(ex.getClass(), ResponseStatus.class) != null)
 			throw ex;
 		ModelAndView mav = new ModelAndView();
