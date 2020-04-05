@@ -13,8 +13,6 @@ import static com.mypractice.assistancetracker.util.CommonUtils.MST;
 import static com.mypractice.assistancetracker.util.CommonUtils.PINCODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.PINCODE_URL;
 import static com.mypractice.assistancetracker.util.CommonUtils.RIDIRECT;
-import static com.mypractice.assistancetracker.util.CommonUtils.STATE;
-import static com.mypractice.assistancetracker.util.CommonUtils.STATE_URL;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ACTION;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +25,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mypractice.assistancetracker.model.MstCode;
 import com.mypractice.assistancetracker.service.MstCodeService;
-import com.mypractice.assistancetracker.util.CommonUtils;
 /**
  * @author nasru
  *
@@ -41,17 +38,14 @@ public class MasterController {
 	public String allMasters(ModelMap model) {
 		model.addAttribute(DROPDOWN_BEAN, new MstCode());
 		model.addAttribute(MASTER, mstCodeService.getAllMaster());
-		return CommonUtils.MASTER;
+		return MASTER;
 	}
 
 	@PostMapping(ALL_MASTER)
 	public String showMasterJsp(@ModelAttribute(DROPDOWN_BEAN) MstCode mstCode) {
 		return RIDIRECT.concat(COLON).concat(mstCode.getCodeID().toLowerCase()).concat(URL_ACTION);
 	}
-	@GetMapping(STATE_URL)
-	public String showState() {
-		return STATE;
-	}
+
 
 	@GetMapping(PINCODE_URL)
 	public String showPincode() {

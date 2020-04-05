@@ -24,29 +24,29 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
+
 /**
  * @author nasru
  * 
  */
 public class CountryDTO {
-	@Pattern(regexp= ONLY_APHA_CHAR_PATTERN + START_DOLLAR  ,message=ONLY_ALPHABET_ALLOW )  
-	@Size(max = LEN_3, min =LEN_3, message = INVALID_FIELD_SIZE)
+	@Pattern(regexp = ONLY_APHA_CHAR_PATTERN + START_DOLLAR, message = ONLY_ALPHABET_ALLOW)
+	@Size(max = LEN_3, min = LEN_3, message = INVALID_FIELD_SIZE)
 	@NotBlank(message = COUNTRY_CODE_INVALID)
 	private String countryCode;
-	@Pattern(regexp= ONLY_CHAR_PATTERN + START_DOLLAR ,message=ONLY_CHAR_ALLOW )  
+	@Pattern(regexp = ONLY_CHAR_PATTERN + START_DOLLAR, message = ONLY_CHAR_ALLOW)
 	@Size(max = LEN_50, min = LEN_3, message = INVALID_FIELD_SIZE)
 	@NotBlank(message = COUNTRY_NAME_INVALID)
 	private String countryName;
-	@Pattern(regexp= ONLY_APHA_CHAR_PATTERN + START_DOLLAR  ,message=ONLY_ALPHABET_ALLOW )  
-	@Size(max = LEN_2, min =LEN_2, message = INVALID_FIELD_SIZE)
+	@Pattern(regexp = ONLY_APHA_CHAR_PATTERN + START_DOLLAR, message = ONLY_ALPHABET_ALLOW)
+	@Size(max = LEN_2, min = LEN_2, message = INVALID_FIELD_SIZE)
 	@NotBlank(message = FIELD_INVALID)
 	private String alpha2Code;
-	@Pattern(regexp= ONLY_DIGIT + START_DOLLAR ,message=ONLY_DIGIT_ALLOW )  
-	@Size(max = LEN_3, min =LEN_3, message = INVALID_FIELD_SIZE)
+	@Pattern(regexp = ONLY_DIGIT + START_DOLLAR, message = ONLY_DIGIT_ALLOW)
+	@Size(max = LEN_3, min = LEN_3, message = INVALID_FIELD_SIZE)
 	@NotBlank(message = FIELD_INVALID)
 	private String numbericCode;
-	public  transient String isNew;
-	
+	public transient String isNew;
 
 	/**
 	 * @return the isNew
@@ -125,17 +125,19 @@ public class CountryDTO {
 	public String getCountryName() {
 		return countryName;
 	}
+
 	/**
 	 * @param countryCode the countryCode to set
 	 */
 	public void setCountryCode(String countryCode) {
 		this.countryCode = countryCode;
 	}
+
 	/**
 	 * @param countryName the countryName to set
 	 */
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
-	
+
 }

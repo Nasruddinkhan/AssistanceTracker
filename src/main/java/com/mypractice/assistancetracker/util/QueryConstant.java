@@ -12,4 +12,7 @@ package com.mypractice.assistancetracker.util;
 public interface QueryConstant {
 	public static final String MST_COMMON_DROPDOWN = "from MstCode where codeType = :";
 	public static final String FIND_ALL_COUNTRY = "from Country";
+	public static final String DELETE_COUNTRY_REC = "delete from Country where countryCode=:";
+	public static final String FIND_ALL_STATE = "from State";
+
 }

@@ -1,7 +1,5 @@
 package com.mypractice.assistancetracker.config;
 
-import javax.validation.Validation;
-
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;

@@ -24,13 +24,13 @@ public interface CommonUtils {
 	public static final String START_DOLLAR = "*$";
 	public static final String ONLY_DIGIT="^[0-9]";
 	public static final String ONLY_APHA_CHAR_PATTERN = "^[A-Z]";
-	public static final String ONLY_CHAR_PATTERN = "^[A-Za-z]";
+	public static final String ONLY_CHAR_PATTERN = "^[A-Za-z\\s]";
 	public static final String OPEN_CURLY_BRESH = "{";
 	public static final String CLOSE_CURLY_BRESH = "}";
 	public static final String COUNTRY_CODE_INVALID = "{country.countrycode.empty}";
 	public static final String COUNTRY_NAME_INVALID = "{country.countryname.empty}";
 	public static final String INVALID_FIELD_SIZE = "{fieldname.size}";
-	public static final String ONLY_ALPHABET_ALLOW = "{country.fieldname.alphachar";
+	public static final String ONLY_ALPHABET_ALLOW = "{country.fieldname.alphachar}";
 	public static final String ONLY_CHAR_ALLOW ="{country.fieldname.onlychar}";
 	public static final String ONLY_DIGIT_ALLOW ="{fieldname.onlydigit}";
 	public static final String URL_ID="ID";
@@ -70,7 +70,14 @@ public interface CommonUtils {
 	public static final String MST = "/mst";
 	public static final String ALL_MASTER = "/allmaster";
 	public static final String MASTER = "master";
+	public static final String UNDER_LINE = "_";
+	public static final String STATES = "states";
 	public static final String  EDI_COUNTRY_URL="/editCountry";
+	public static final String COUNTRYCODE="COUNTRYCODE";
+	public static final String STATE_CODE="STATE_CODE";
+	public static final String STATE_NAME="STATE_NAME";
+	public static final String EDIT="/edit";
+
 	public static boolean checkListNullOrEmpty(Collection<?> list) {
 		return CHECK_LIST_NULL_OR_EMPLTY.test(list);
 	}

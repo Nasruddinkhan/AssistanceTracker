@@ -22,11 +22,11 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
-
 import com.mypractice.assistancetracker.model.Authorities;
 import com.mypractice.assistancetracker.model.Country;
 import com.mypractice.assistancetracker.model.MstCode;
 import com.mypractice.assistancetracker.model.PersistentLogins;
+import com.mypractice.assistancetracker.model.State;
 import com.mypractice.assistancetracker.model.User;
 @Configuration
 @PropertySource("classpath:db.properties")
@@ -60,7 +60,7 @@ public class AppConfig {
     props.put(C3P0_TIMEOUT, env.getProperty("hibernate.c3p0.timeout"));
     props.put(C3P0_MAX_STATEMENTS, env.getProperty("hibernate.c3p0.max_statements"));
     factoryBean.setHibernateProperties(props);
-    factoryBean.setAnnotatedClasses(User.class, Authorities.class, PersistentLogins.class, MstCode.class, Country.class);
+    factoryBean.setAnnotatedClasses(User.class, Authorities.class, PersistentLogins.class, MstCode.class, Country.class, State.class);
     return factoryBean;
   }
 

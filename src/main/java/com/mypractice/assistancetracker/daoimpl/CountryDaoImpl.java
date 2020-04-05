@@ -13,6 +13,8 @@ import org.springframework.stereotype.Repository;
 import com.mypractice.assistancetracker.dao.CountryDao;
 import com.mypractice.assistancetracker.model.Country;
 import static com.mypractice.assistancetracker.util.QueryConstant.FIND_ALL_COUNTRY;
+import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRYCODE;
+import static com.mypractice.assistancetracker.util.QueryConstant.DELETE_COUNTRY_REC;
 /**
  * @author nasru
  *
@@ -39,12 +41,12 @@ public class CountryDaoImpl implements CountryDao {
 	@Override
 	public Country findByCountry(String countryCode) {
 		// TODO Auto-generated method stub
-		return sessionFactory.getCurrentSession().load(Country.class,countryCode);
+		return sessionFactory.getCurrentSession().get(Country.class,countryCode);
 	}
 	@Override
 	public Integer deleteCountryByCode(String countryCode) {
 		// TODO Auto-generated method stub
-		return sessionFactory.getCurrentSession().createQuery("delete from Country where countryCode=:COUNTRYCODE ")
-				.setParameter("COUNTRYCODE", countryCode).executeUpdate();
+		return sessionFactory.getCurrentSession().createQuery(DELETE_COUNTRY_REC.concat(COUNTRYCODE))
+				.setParameter(COUNTRYCODE, countryCode).executeUpdate();
 	}
 }
