@@ -33,4 +33,9 @@ public interface StateService {
 	 * @return
 	 */
 	StateDto findState(String stateCode);
+
+	/**
+	 * @param stateCode
+	 */
+	void deleteState(String stateCode);
 }

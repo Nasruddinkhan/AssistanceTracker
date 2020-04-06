@@ -31,4 +31,11 @@ public interface StateDao {
 	 */
 	State findState(String stateCode);
 
+	
+
+	/**
+	 * @param stateCode
+	 */
+	void deleteState(String stateCode);
+
 }

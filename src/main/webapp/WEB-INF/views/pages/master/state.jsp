@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
@@ -117,7 +118,7 @@
 														type="button" class="btn btn-sm btn-info btn-box-tool">
 														<i class="fa fa-edit" style="color: white"></i>
 													</button> </a> <a
-													href="${pageContext.request.contextPath}/mst/country/${state.stateCode}.do"><button
+													href="${pageContext.request.contextPath}/mst/delete/${state.stateCode}/state.do"><button
 														type="button" class="btn btn-sm btn-danger btn-box-tool">
 														<i class="fa fa-trash" style="color: white"></i>
 													</button> </a>

@@ -77,6 +77,8 @@ public interface CommonUtils {
 	public static final String STATE_CODE="STATE_CODE";
 	public static final String STATE_NAME="STATE_NAME";
 	public static final String EDIT="/edit";
+	public static final String DELETE="/delete";
+
 
 	public static boolean checkListNullOrEmpty(Collection<?> list) {
 		return CHECK_LIST_NULL_OR_EMPLTY.test(list);

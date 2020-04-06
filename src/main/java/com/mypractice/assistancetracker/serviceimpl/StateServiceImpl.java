@@ -56,6 +56,8 @@ public class StateServiceImpl implements StateService {
 		// TODO Auto-generated method stub
 		List<StateDto> stateDtos = null;
 		List<State> states=	stateDao.getStates();
+		System.out.println(states.size());
+		System.out.println("StateServiceImpl.getStates()"+checkListNullOrEmpty(states));
 		if(!checkListNullOrEmpty(states)){
 			stateDtos =	states.stream().map((Function<? super State, ? extends StateDto>) obj->{
 				StateDto dto = new StateDto();
@@ -67,6 +69,7 @@ public class StateServiceImpl implements StateService {
 				return dto;
 			}).collect(Collectors.toList());
 		}
+		System.out.println("StateServiceImpl.getStates() end "+ stateDtos);
 		return stateDtos;
 	}
 	@Override
@@ -81,6 +84,11 @@ public class StateServiceImpl implements StateService {
 		stateDto.setAlpha2Code(state.getAlpha2Code());
 		stateDto.setCountryName(state.getCountry().getCountryName());
 		return stateDto;
+	}
+	@Override
+	public void deleteState(String stateCode) {
+		// TODO Auto-generated method stub
+		stateDao.deleteState(stateCode);
 	}
 
 }

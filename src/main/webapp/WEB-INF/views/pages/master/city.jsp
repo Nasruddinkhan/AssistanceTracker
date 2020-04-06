@@ -13,23 +13,72 @@
 				</button>
 			</div>
 		</div>
-	</div>
-	<div class="box box-success">
-		<div class="box-header with-border">
-			<h3 class="box-title"></h3>
-			<div class="box-tools pull-center">
-				<button type="button" class="btn btn-sm btn-primary btn-box-tool">
-					<i class="fa fa-plus" style="color: white"></i>
-				</button>
-				<button type="button" class="btn btn-sm btn-info btn-box-tool">
-					<i class="fa fa-edit" style="color: white"></i>
-				</button>
-				<button type="button" class="btn btn-sm btn-danger btn-box-tool">
-					<i class="fa fa-trash" style="color: white"></i>
-				</button>
+		
+		<div class="row">
+		<form:form modelAttribute="city" method="POST"
+				action="${pageContext.request.contextPath}/mst/savecity.do">
+			<div class="col-sm-12">
+				<div class="box-body">
+					<div class="form-group col-sm-6">
+						<label for="cityCode">City Code</label>
+							<form:input path="cityCode" type="text" class="form-control"
+										placeholder="Enter City Code" />
+										<form:errors path="cityCode" cssClass="error" />
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="cityName">City Name</label>
+							<form:input path="cityName" type="text" class="form-control"
+										placeholder="Enter City Code" />
+										<form:errors path="cityName" cssClass="error" />
+										
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="cityAlphaCOde">City 2 Alpha Code</label>
+							<form:input path="cityAlphaCOde"  type="text" class="form-control"
+										placeholder="Enter City Code" />
+										<form:errors path="cityAlphaCOde" cssClass="error" />
+					</div>
+					<div class="form-group col-sm-6">
+						<label for="country">Country</label>
+							<form:select path="country" class="form-control select2">
+								<form:option value="">----SELECT STATE----</form:option>
+								<form:options items="${state}" itemValue="key"
+									itemLabel="value" />
+							</form:select>
+										<form:errors path="country" cssClass="error" />
+										
+					</div>
+				
+				</div>
+				<div class="box-footer">
+						<div class="col-sm-12 col-sm-offset-5">
+							<button type="submit" class="btn btn-primary">
+							
+									Save
+								
+							</button>
+						</div>
+					</div>
 			</div>
+			</form:form>
 		</div>
-		<div class="box-body"></div>
-	</div>
+		</div>
+		<div class="box box-success">
+			<div class="box-header with-border">
+				<h3 class="box-title"></h3>
+				<div class="box-tools pull-center">
+					<button type="button" class="btn btn-sm btn-primary btn-box-tool">
+						<i class="fa fa-plus" style="color: white"></i>
+					</button>
+					<button type="button" class="btn btn-sm btn-info btn-box-tool">
+						<i class="fa fa-edit" style="color: white"></i>
+					</button>
+					<button type="button" class="btn btn-sm btn-danger btn-box-tool">
+						<i class="fa fa-trash" style="color: white"></i>
+					</button>
+				</div>
+			</div>
+			<div class="box-body"></div>
+		</div>
 </section>
 

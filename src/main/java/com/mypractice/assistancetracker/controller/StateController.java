@@ -8,8 +8,10 @@ package com.mypractice.assistancetracker.controller;
 import static com.mypractice.assistancetracker.util.CommonUtils.CLOSE_CURLY_BRESH;
 import static com.mypractice.assistancetracker.util.CommonUtils.COLON;
 import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRIES;
+import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY;
 import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY_URL;
 import static com.mypractice.assistancetracker.util.CommonUtils.CSS;
+import static com.mypractice.assistancetracker.util.CommonUtils.EDIT;
 import static com.mypractice.assistancetracker.util.CommonUtils.MSG;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST;
 import static com.mypractice.assistancetracker.util.CommonUtils.OPEN_CURLY_BRESH;
@@ -17,13 +19,14 @@ import static com.mypractice.assistancetracker.util.CommonUtils.RIDIRECT;
 import static com.mypractice.assistancetracker.util.CommonUtils.SAVE;
 import static com.mypractice.assistancetracker.util.CommonUtils.SLASH;
 import static com.mypractice.assistancetracker.util.CommonUtils.STATE;
+import static com.mypractice.assistancetracker.util.CommonUtils.STATES;
 import static com.mypractice.assistancetracker.util.CommonUtils.STATE_URL;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ACTION;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ID;
 import static com.mypractice.assistancetracker.util.CommonUtils.responseResult;
 import static com.mypractice.assistancetracker.util.ErrorConstant.SUCCESS;
-import static com.mypractice.assistancetracker.util.CommonUtils.STATES;
-import static com.mypractice.assistancetracker.util.CommonUtils.EDIT;
+import static com.mypractice.assistancetracker.util.CommonUtils.DELETE;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,6 +83,13 @@ public class StateController {
 		System.out.println();
 		StateDto stateDto =  stateService.findState(stateCode);
 		model.addAttribute(STATE, stateDto);
+		return STATE;
+	}
+	@GetMapping(DELETE+SLASH+OPEN_CURLY_BRESH+URL_ID+CLOSE_CURLY_BRESH+SLASH+STATE)
+	public String  deleteCountry(@PathVariable(URL_ID) String stateCode,
+			ModelMap model) {
+		stateService.deleteState(stateCode);
+		onLoads(model);
 		return STATE;
 	}
 }
