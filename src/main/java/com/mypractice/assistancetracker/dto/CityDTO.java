@@ -39,11 +39,35 @@ public class CityDTO {
 	@Size(max = LEN_2, min =LEN_2, message = INVALID_FIELD_SIZE)
 	private String cityAlphaCOde;
 	@NotBlank(message = FIELD_INVALID)
-	private String country;
-	@NotBlank(message = FIELD_INVALID)
 	private String state;
+	public  transient String isNew;
+	public transient String stateName;
 	
 	
+	/**
+	 * @return the isNew
+	 */
+	public String getIsNew() {
+		return isNew;
+	}
+	/**
+	 * @return the stateName
+	 */
+	public String getStateName() {
+		return stateName;
+	}
+	/**
+	 * @param isNew the isNew to set
+	 */
+	public void setIsNew(String isNew) {
+		this.isNew = isNew;
+	}
+	/**
+	 * @param stateName the stateName to set
+	 */
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
+	}
 	/**
 	 * 
 	 */
@@ -63,7 +87,6 @@ public class CityDTO {
 		this.cityCode = cityCode;
 		this.cityName = cityName;
 		this.cityAlphaCOde = cityAlphaCOde;
-		this.country = country;
 		this.state = state;
 	}
 	/**
@@ -84,12 +107,7 @@ public class CityDTO {
 	public String getCityAlphaCOde() {
 		return cityAlphaCOde;
 	}
-	/**
-	 * @return the country
-	 */
-	public String getCountry() {
-		return country;
-	}
+
 	/**
 	 * @return the state
 	 */
@@ -114,12 +132,7 @@ public class CityDTO {
 	public void setCityAlphaCOde(String cityAlphaCOde) {
 		this.cityAlphaCOde = cityAlphaCOde;
 	}
-	/**
-	 * @param country the country to set
-	 */
-	public void setCountry(String country) {
-		this.country = country;
-	}
+	
 	/**
 	 * @param state the state to set
 	 */
@@ -129,7 +142,7 @@ public class CityDTO {
 	@Override
 	public String toString() {
 		return "CityDTO [cityCode=" + cityCode + ", cityName=" + cityName + ", cityAlphaCOde=" + cityAlphaCOde
-				+ ", country=" + country + ", state=" + state + "]";
+				+ ", state=" + state + "]";
 	}
 	
 	

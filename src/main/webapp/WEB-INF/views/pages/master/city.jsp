@@ -20,9 +20,20 @@
 			<div class="col-sm-12">
 				<div class="box-body">
 					<div class="form-group col-sm-6">
-						<label for="cityCode">City Code</label>
-							<form:input path="cityCode" type="text" class="form-control"
-										placeholder="Enter City Code" />
+						<label for="stateCode">State Code</label>
+							<c:choose>
+								<c:when test="${not empty city.cityCode}">
+									<form:input type="text" class="form-control" path="cityCode"
+										readonly="true" />
+									<form:hidden class="form-control" path="isNew" value="false" />
+
+								</c:when>
+								<c:otherwise>
+									<form:hidden class="form-control" path="isNew" value="true" />
+									<form:input path="cityCode" type="text" class="form-control"
+										placeholder="Enter State Code" />
+								</c:otherwise>
+							</c:choose>
 										<form:errors path="cityCode" cssClass="error" />
 					</div>
 					<div class="form-group col-sm-6">
@@ -39,23 +50,26 @@
 										<form:errors path="cityAlphaCOde" cssClass="error" />
 					</div>
 					<div class="form-group col-sm-6">
-						<label for="country">Country</label>
-							<form:select path="country" class="form-control select2">
+						<label for="country">State</label>
+							<form:select path="state" class="form-control select2">
 								<form:option value="">----SELECT STATE----</form:option>
 								<form:options items="${state}" itemValue="key"
 									itemLabel="value" />
 							</form:select>
-										<form:errors path="country" cssClass="error" />
+										<form:errors path="state" cssClass="error" />
 										
 					</div>
 				
 				</div>
 				<div class="box-footer">
 						<div class="col-sm-12 col-sm-offset-5">
-							<button type="submit" class="btn btn-primary">
-							
-									Save
-								
+							<button type="submit" class="btn btn-primary btn-sm">
+							<c:choose>
+								<c:when test="${not empty  city.cityCode}">
+									Update
+								</c:when>
+								<c:otherwise>Save</c:otherwise>
+							</c:choose>
 							</button>
 						</div>
 					</div>
@@ -63,22 +77,63 @@
 			</form:form>
 		</div>
 		</div>
-		<div class="box box-success">
-			<div class="box-header with-border">
-				<h3 class="box-title"></h3>
-				<div class="box-tools pull-center">
-					<button type="button" class="btn btn-sm btn-primary btn-box-tool">
-						<i class="fa fa-plus" style="color: white"></i>
-					</button>
-					<button type="button" class="btn btn-sm btn-info btn-box-tool">
-						<i class="fa fa-edit" style="color: white"></i>
-					</button>
-					<button type="button" class="btn btn-sm btn-danger btn-box-tool">
-						<i class="fa fa-trash" style="color: white"></i>
-					</button>
+		<c:if test="${not empty msg}">
+			<div class="alert alert-${css} alert-dismissible hideMe" id='hideMe'
+				role="alert" style="text-align: center;">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong class="hideMe">${msg}</strong>
+			</div>
+		</c:if>
+		<c:if test="${not empty cities}">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="box">
+					<div class="box-header">
+						<h3 class="box-title">City List</h3>
+					</div>
+					<!-- /.box-header -->
+					<div class="box-body">
+						<table id="example1"
+							class="table table-sm table-bordered table-striped">
+							<thead>
+								<tr>
+									<th>City</th>
+									<th>State Name</th>
+									<th>Alpha 2 Code</th>
+									<th>State</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<c:forEach items="${cities}" var="city">
+									<tr>
+										<td>${city.cityCode}</td>
+										<td>${city.cityName}</td>
+										<td>${city.cityAlphaCOde}</td>
+										<td>${city.state} - ${city.stateName}</td>
+										<td><div class="box-tools pull-center">
+												<a
+													href="${pageContext.request.contextPath}/mst/edit/${city.cityCode}/city.do"><button
+														type="button" class="btn btn-sm btn-info btn-box-tool">
+														<i class="fa fa-edit" style="color: white"></i>
+													</button> </a> <a
+													href="${pageContext.request.contextPath}/mst/delete/${city.cityCode}/city.do"><button
+														type="button" class="btn btn-sm btn-danger btn-box-tool">
+														<i class="fa fa-trash" style="color: white"></i>
+													</button> </a>
+
+											</div></td>
+									</tr>
+								</c:forEach>
+							</tbody>
+						</table>
+					</div>
 				</div>
 			</div>
-			<div class="box-body"></div>
 		</div>
+	</c:if>
 </section>
 

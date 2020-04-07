@@ -5,6 +5,7 @@
  */
 package com.mypractice.assistancetracker.model;
 import static com.mypractice.assistancetracker.util.CommonUtils.ALPHA_2_CODE;
+import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY_CODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_3;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_50;
 import static com.mypractice.assistancetracker.util.CommonUtils.MASTER;
@@ -12,15 +13,22 @@ import static com.mypractice.assistancetracker.util.CommonUtils.STATE;
 import static com.mypractice.assistancetracker.util.CommonUtils.STATE_CODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.STATE_NAME;
 import static com.mypractice.assistancetracker.util.CommonUtils.UNDER_LINE;
-import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY_CODE;
 
+import java.util.Set;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
 import com.mypractice.assistancetracker.util.CommonUtils;
 /**
  * @author nasru
@@ -39,7 +47,22 @@ public class State {
 	@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = COUNTRY_CODE)
     private Country country;
+	@OneToMany(mappedBy =STATE, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private Set<City> city;
 	
+	/**
+	 * @return the city
+	 */
+	public Set<City> getCity() {
+		return city;
+	}
+	/**
+	 * @param city the city to set
+	 */
+	public void setCity(Set<City> city) {
+		this.city = city;
+	}
 	/**
 	 * @return the country
 	 */
