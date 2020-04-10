@@ -17,6 +17,7 @@ import static com.mypractice.assistancetracker.util.CommonUtils.NUMERIC_CODE;
 import java.io.Serializable;
 import java.util.Set;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -25,6 +26,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 /**
@@ -33,6 +36,8 @@ import org.hibernate.annotations.LazyCollectionOption;
  */
 @Entity
 @Table(name = COUNTRY_MASTER)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Cacheable
 public class Country implements Serializable {
 	/**
 	 * 
@@ -47,6 +52,8 @@ public class Country implements Serializable {
 	private String alpha2Code;
 	@Column(name = NUMERIC_CODE, length = LEN_3)
 	private String numbericCode;
+
+	@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	@OneToMany(mappedBy =COUNTRY, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private Set<State> state;

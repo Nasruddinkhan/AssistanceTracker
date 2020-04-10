@@ -41,6 +41,7 @@ import com.mypractice.assistancetracker.service.CountryService;
 @Controller
 @RequestMapping(MST)
 public class CountryController {
+	
 	@Autowired
 	private CountryService countryService;
 	public void onLoads(ModelMap model) {

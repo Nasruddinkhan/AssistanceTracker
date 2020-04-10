@@ -41,7 +41,7 @@ public class CountryDaoImpl implements CountryDao {
 	@Override
 	public Country findByCountry(String countryCode) {
 		// TODO Auto-generated method stub
-		return sessionFactory.getCurrentSession().get(Country.class,countryCode);
+		return sessionFactory.getCurrentSession().load(Country.class,countryCode);
 	}
 	@Override
 	public Integer deleteCountryByCode(String countryCode) {

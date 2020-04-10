@@ -45,10 +45,4 @@ public class MasterController {
 	public String showMasterJsp(@ModelAttribute(DROPDOWN_BEAN) MstCode mstCode) {
 		return RIDIRECT.concat(COLON).concat(mstCode.getCodeID().toLowerCase()).concat(URL_ACTION);
 	}
-
-
-	@GetMapping(PINCODE_URL)
-	public String showPincode() {
-		return PINCODE;
-	}
 }

@@ -16,6 +16,7 @@ import static com.mypractice.assistancetracker.util.CommonUtils.UNDER_LINE;
 
 import java.util.Set;
 
+import javax.persistence.Cacheable;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -26,6 +27,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
@@ -36,6 +39,8 @@ import com.mypractice.assistancetracker.util.CommonUtils;
  */
 @Entity
 @Table(name =STATE+UNDER_LINE+MASTER)
+@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+@Cacheable
 public class State {
 	@Id
 	@Column(name = STATE_CODE,length = LEN_3)
@@ -45,12 +50,14 @@ public class State {
 	@Column(name = ALPHA_2_CODE, length = CommonUtils.LEN_2)
 	private String alpha2Code;
 	@ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = COUNTRY_CODE)
-    private Country country;
+	@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
+	@JoinColumn(name = COUNTRY_CODE)
+	private Country country;
 	@OneToMany(mappedBy =STATE, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+	@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private Set<City> city;
-	
+
 	/**
 	 * @return the city
 	 */

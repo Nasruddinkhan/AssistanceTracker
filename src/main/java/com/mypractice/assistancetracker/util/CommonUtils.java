@@ -40,6 +40,7 @@ public interface CommonUtils {
 	public static final String COUNTRY_NAME = "COUNTRY_NAME";
 	public static final String COUNTRY_MASTER = "COUNTRY_MASTER";
 	public static final int LEN_3 = 3;
+	public static final int LEN_6 = 6;
 	public static final String STATE = "state";
 	public static final String STATE_URL = "/state";
 	public static final String SLASH = "/";
@@ -82,7 +83,10 @@ public interface CommonUtils {
 	public static final String CITY_NAME="CITY_NAME";
 	public static final String CITY_ALPHA_CODE="CITY_ALPHA_CODE";
 	public static final String CITIES="cities";
-
+	public static final String PIN_CODE="PIN_CODE";
+	public static final String PINCODES="pincodes";
+	public static final String STR_TRUE="true";
+	public static final String STR_FALSE="false";
 	public static boolean checkListNullOrEmpty(Collection<?> list) {
 		return CHECK_LIST_NULL_OR_EMPLTY.test(list);
 	}

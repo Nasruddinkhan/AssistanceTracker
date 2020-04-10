@@ -5,13 +5,17 @@ import static org.hibernate.cfg.AvailableSettings.C3P0_MAX_SIZE;
 import static org.hibernate.cfg.AvailableSettings.C3P0_MAX_STATEMENTS;
 import static org.hibernate.cfg.AvailableSettings.C3P0_MIN_SIZE;
 import static org.hibernate.cfg.AvailableSettings.C3P0_TIMEOUT;
+import static org.hibernate.cfg.AvailableSettings.CACHE_REGION_FACTORY;
 import static org.hibernate.cfg.AvailableSettings.DRIVER;
 import static org.hibernate.cfg.AvailableSettings.HBM2DDL_AUTO;
 import static org.hibernate.cfg.AvailableSettings.PASS;
 import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
 import static org.hibernate.cfg.AvailableSettings.URL;
 import static org.hibernate.cfg.AvailableSettings.USER;
+import static org.hibernate.cfg.AvailableSettings.USE_SECOND_LEVEL_CACHE;
+
 import java.util.Properties;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -22,11 +26,13 @@ import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+
 import com.mypractice.assistancetracker.model.Authorities;
 import com.mypractice.assistancetracker.model.City;
 import com.mypractice.assistancetracker.model.Country;
 import com.mypractice.assistancetracker.model.MstCode;
 import com.mypractice.assistancetracker.model.PersistentLogins;
+import com.mypractice.assistancetracker.model.PinCode;
 import com.mypractice.assistancetracker.model.State;
 import com.mypractice.assistancetracker.model.User;
 
@@ -61,9 +67,12 @@ public class AppConfig {
 		props.put(C3P0_ACQUIRE_INCREMENT, env.getProperty("hibernate.c3p0.acquire_increment"));
 		props.put(C3P0_TIMEOUT, env.getProperty("hibernate.c3p0.timeout"));
 		props.put(C3P0_MAX_STATEMENTS, env.getProperty("hibernate.c3p0.max_statements"));
+		props.put(USE_SECOND_LEVEL_CACHE, env.getProperty("hibernate.cache.second_level_cache"));
+		props.put(CACHE_REGION_FACTORY, env.getProperty("hibernate.cache.ehcache"));
+	//	props.put(QUERY_CACHE_FACTORY, env.getProperty("hibernate.cache.second_level_cache"));
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setAnnotatedClasses(User.class, Authorities.class, City.class, PersistentLogins.class,
-				MstCode.class, Country.class, State.class);
+				MstCode.class, Country.class, State.class, PinCode.class);
 		return factoryBean;
 	}
 
