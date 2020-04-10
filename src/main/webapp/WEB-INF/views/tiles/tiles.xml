@@ -1,46 +1,81 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">  
-<tiles-definitions>  
-   <!-- Base Definition -->
-   <definition name="base-definition" 
-       template="/WEB-INF/views/tiles/layouts/layout.jsp">  
-       <put-attribute name="title" value="" />  
-       <put-attribute name="header" value="/WEB-INF/views/tiles/template/header.jsp" />  
-       <put-attribute name="menu" value="/WEB-INF/views/tiles/template/menu.jsp" />  
-       <put-attribute name="body" value="" />  
-       <put-attribute name="footer" value="/WEB-INF/views/tiles/template/footer.jsp" />  
-   </definition>  
-   <definition name="welcome" extends="base-definition">  
-       <put-attribute name="title" value="Welcome" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/dashboard.jsp" />  
-   </definition> 
-    <definition name="master" extends="base-definition">  
-       <put-attribute name="title" value="Welcome" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/master.jsp" />  
-   </definition> 
-   <definition name="member" extends="base-definition">  
-       <put-attribute name="title" value="Welcome" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/member/member.jsp" />  
-   </definition> 
-      <definition name="error" extends="base-definition">  
-       <put-attribute name="title" value="Welcome" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/error/error.jsp" />  
-   </definition> 
-   <definition name="state" extends="base-definition">  
-       <put-attribute name="title" value="Welcome" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/master/state.jsp" />  
-   </definition> 
-      <definition name="city" extends="base-definition">  
-       <put-attribute name="title" value="Welcome" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/master/city.jsp" />  
-   </definition> 
-      <definition name="country" extends="base-definition">  
-       <put-attribute name="title" value="Welcome" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/master/country.jsp" />  
-   </definition> 
-      <definition name="pincode" extends="base-definition">  
-       <put-attribute name="title" value="Welcome" />  
-       <put-attribute name="body" value="/WEB-INF/views/pages/master/pincode.jsp" />  
-   </definition> 
-   
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"  "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<!-- Base Definition -->
+	<definition name="base-definition"
+		template="/WEB-INF/views/tiles/layouts/layout.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header"
+			value="/WEB-INF/views/tiles/template/header.jsp" />
+		<put-attribute name="menu"
+			value="/WEB-INF/views/tiles/template/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer"
+			value="/WEB-INF/views/tiles/template/footer.jsp" />
+	</definition>
+	<definition name="welcome" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/dashboard.jsp" />
+	</definition>
+	<definition name="master" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/master.jsp" />
+	</definition>
+	<definition name="member" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/member/member.jsp" />
+	</definition>
+	<definition name="error" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/error/error.jsp" />
+	</definition>
+	<definition name="state" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/master/state.jsp" />
+	</definition>
+	<definition name="city" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/master/city.jsp" />
+	</definition>
+	<definition name="country" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/master/country.jsp" />
+	</definition>
+	<definition name="pincode" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/master/pincode.jsp" />
+	</definition>
+	<definition name="profession" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/master/profession.jsp" />
+	</definition>
+	<definition name="needy_problems" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/master/needy_problems.jsp" />
+	</definition>
+	<definition name="payment_mode" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/master/payment_mode.jsp" />
+	</definition>
+	<definition name="relationship" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/master/relationship.jsp" />
+	</definition>
+	<definition name="needy_refered" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/master/needy_refered.jsp" />
+	</definition>
 </tiles-definitions>

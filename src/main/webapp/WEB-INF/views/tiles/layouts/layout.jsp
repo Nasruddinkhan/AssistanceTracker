@@ -73,6 +73,10 @@
     position: absolute;     
   }
 }
+.box-primary{
+box-shadow: 0 2px 10px rgba(0,0,0,.2) !important;
+}
+
 </style>
 
 </head>

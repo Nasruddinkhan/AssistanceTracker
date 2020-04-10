@@ -87,6 +87,17 @@ public interface CommonUtils {
 	public static final String PINCODES="pincodes";
 	public static final String STR_TRUE="true";
 	public static final String STR_FALSE="false";
+	public static final String PROFESSION_URL = "/profession";
+	public static final String PROFESSION = "profession";
+	public static final String REASON_URL = "/needy_problems";
+	public static final String REASON = "needy_problems";
+	public static final String PAYMENT_MODE_URL = "/payment_mode";
+	public static final String PAYMENT_MODE = "payment_mode";
+	public static final String RELATIONSHIP_URL ="/relationship";
+	public static final String RELATIONSHIP ="relationship";
+	public static final String NEEDY_REFERED ="needy_refered";
+	public static final String NEEDY_REFERED_URL ="/needy_refered";
+
 	public static boolean checkListNullOrEmpty(Collection<?> list) {
 		return CHECK_LIST_NULL_OR_EMPLTY.test(list);
 	}
