@@ -34,7 +34,20 @@ public class PaymentDTO {
 	private String paymentModeName;
 	private LocalDateTime createDateTime;
 	private LocalDateTime updateDateTime;
-
+	public String isNew;
+	
+	/**
+	 * @return the isNew
+	 */
+	public String getIsNew() {
+		return isNew;
+	}
+	/**
+	 * @param isNew the isNew to set
+	 */
+	public void setIsNew(String isNew) {
+		this.isNew = isNew;
+	}
 	/**
 	 * @return the createDateTime
 	 */

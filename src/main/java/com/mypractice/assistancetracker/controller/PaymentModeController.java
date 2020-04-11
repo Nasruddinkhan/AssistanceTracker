@@ -7,8 +7,10 @@ package com.mypractice.assistancetracker.controller;
 
 import static com.mypractice.assistancetracker.util.CommonUtils.CLOSE_CURLY_BRESH;
 import static com.mypractice.assistancetracker.util.CommonUtils.COLON;
+import static com.mypractice.assistancetracker.util.CommonUtils.CSS;
 import static com.mypractice.assistancetracker.util.CommonUtils.DELETE;
 import static com.mypractice.assistancetracker.util.CommonUtils.EDIT;
+import static com.mypractice.assistancetracker.util.CommonUtils.MSG;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST;
 import static com.mypractice.assistancetracker.util.CommonUtils.OPEN_CURLY_BRESH;
 import static com.mypractice.assistancetracker.util.CommonUtils.PAYMENTS;
@@ -21,6 +23,8 @@ import static com.mypractice.assistancetracker.util.CommonUtils.SLASH;
 import static com.mypractice.assistancetracker.util.CommonUtils.STR_TRUE;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ACTION;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ID;
+import static com.mypractice.assistancetracker.util.CommonUtils.responseResult;
+import static com.mypractice.assistancetracker.util.ErrorConstant.SUCCESS;
 
 import javax.validation.Valid;
 
@@ -65,8 +69,8 @@ public class PaymentModeController {
 			return PAYMENT_MODE;
 		}
 		modeService.savePaymentMode(paymentDTO);
-		//redirectAttributes.addFlashAttribute(CSS, SUCCESS);
-		//redirectAttributes.addFlashAttribute(MSG, responseResult(pinCodeDTO.getIsNew()));
+		redirectAttributes.addFlashAttribute(CSS, SUCCESS);
+		redirectAttributes.addFlashAttribute(MSG, responseResult(paymentDTO.getIsNew()));
 		return RIDIRECT.concat(COLON).concat(PAYMENT_MODE).concat(URL_ACTION);
 
 	}

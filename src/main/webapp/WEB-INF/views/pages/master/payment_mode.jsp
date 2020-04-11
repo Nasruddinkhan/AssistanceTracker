@@ -44,9 +44,11 @@
 					<button type="submit" class="btn btn-primary">
 						<c:choose>
 							<c:when test="${not empty payment_mode.paymentModeId}">
+								<form:hidden class="form-control" path="isNew" value="fasle" />
 					Update
 					</c:when>
 							<c:otherwise>
+								<form:hidden class="form-control" path="isNew" value="true" />
 					Save
 					</c:otherwise>
 						</c:choose>
@@ -55,6 +57,16 @@
 				</div>
 			</div>
 		</form:form>
+		<c:if test="${not empty msg}">
+			<div class="alert alert-${css} alert-dismissible hideMe" id='hideMe'
+				role="alert" style="text-align: center;">
+				<button type="button" class="close" data-dismiss="alert"
+					aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<strong class="hideMe">${msg}</strong>
+			</div>
+		</c:if>
 	</div>
 	<c:if test="${not empty payments}">
 		<div class="row">
