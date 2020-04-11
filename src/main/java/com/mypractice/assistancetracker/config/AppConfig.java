@@ -31,6 +31,7 @@ import com.mypractice.assistancetracker.model.Authorities;
 import com.mypractice.assistancetracker.model.City;
 import com.mypractice.assistancetracker.model.Country;
 import com.mypractice.assistancetracker.model.MstCode;
+import com.mypractice.assistancetracker.model.PaymentMode;
 import com.mypractice.assistancetracker.model.PersistentLogins;
 import com.mypractice.assistancetracker.model.PinCode;
 import com.mypractice.assistancetracker.model.State;
@@ -43,7 +44,8 @@ import com.mypractice.assistancetracker.model.User;
 		@ComponentScan("com.mypractice.assistancetracker.daoimpl"),
 		@ComponentScan("com.mypractice.assistancetracker.serviceimpl"),
 		@ComponentScan("com.mypractice.assistancetracker.exception"),
-		@ComponentScan("com.mypractice.assistancetracker.service") })
+		@ComponentScan("com.mypractice.assistancetracker.service"),
+		@ComponentScan("com.mypractice.assistancetracker.validation") })
 public class AppConfig {
 
 	@Autowired
@@ -72,7 +74,8 @@ public class AppConfig {
 	//	props.put(QUERY_CACHE_FACTORY, env.getProperty("hibernate.cache.second_level_cache"));
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setAnnotatedClasses(User.class, Authorities.class, City.class, PersistentLogins.class,
-				MstCode.class, Country.class, State.class, PinCode.class);
+				MstCode.class, Country.class, State.class, PinCode.class, PaymentMode.class);
+		//factoryBean.setValidationMode(ValidationMode.NONE); 
 		return factoryBean;
 	}
 

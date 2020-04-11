@@ -15,6 +15,8 @@ import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.tiles3.TilesConfigurer;
 import org.springframework.web.servlet.view.tiles3.TilesViewResolver;
 
+import com.mypractice.assistancetracker.validation.UniqueValidator;
+
 @Configuration
 @EnableWebMvc
 @ComponentScan(basePackages = { "com.mypractice.assistancetracker.controller" })
@@ -64,8 +66,4 @@ public class WebConfig implements WebMvcConfigurer    {
 	    bean.setValidationMessageSource(messageSource());
 	    return bean;
 	}
-	/*@Bean
-	public HttpSessionEventPublisher httpSessionEventPublisher() {
-	    return new HttpSessionEventPublisher();
-	}*/
 }

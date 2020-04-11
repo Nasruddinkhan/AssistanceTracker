@@ -22,7 +22,7 @@ import com.mypractice.assistancetracker.util.CommonUtils;
  */
 @ControllerAdvice
 public class GlobalExceptionHandler {
-	@ExceptionHandler(Exception.class)
+	@ExceptionHandler({Exception.class, RuntimeException.class})
 	public final ModelAndView globleExcpetionHandler(HttpServletRequest req, Exception ex) throws Exception {
 		ex.printStackTrace();
 		if (AnnotationUtils.findAnnotation(ex.getClass(), ResponseStatus.class) != null)
