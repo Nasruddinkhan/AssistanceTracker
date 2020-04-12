@@ -101,6 +101,8 @@ public interface CommonUtils {
 	public static final String SequenceId_Generator = "com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGenerator";
 	public static final String TEN_DIGIT ="%010d";
 	public static final String PAYMENT_MODE_PREFIX = "PAYMODE_" ;
+	public static final String RELATIONSHIP_MODE_PREFIX = "RELATIONSHIP_" ;
+	public static final String RELATIONSHIPS="relationships";
 	public static final String SEQ = "SEQ" ;
 	public static final String LEN_1 = "1";
 	public static final String VERSION="VERSION";

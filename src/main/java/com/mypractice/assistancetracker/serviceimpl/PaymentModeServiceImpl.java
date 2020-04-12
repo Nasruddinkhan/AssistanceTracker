@@ -5,7 +5,6 @@
  */
 package com.mypractice.assistancetracker.serviceimpl;
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
