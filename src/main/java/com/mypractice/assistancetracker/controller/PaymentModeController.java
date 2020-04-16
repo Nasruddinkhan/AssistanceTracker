@@ -16,11 +16,9 @@ import static com.mypractice.assistancetracker.util.CommonUtils.OPEN_CURLY_BRESH
 import static com.mypractice.assistancetracker.util.CommonUtils.PAYMENTS;
 import static com.mypractice.assistancetracker.util.CommonUtils.PAYMENT_MODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.PAYMENT_MODE_URL;
-import static com.mypractice.assistancetracker.util.CommonUtils.PINCODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.RIDIRECT;
 import static com.mypractice.assistancetracker.util.CommonUtils.SAVE;
 import static com.mypractice.assistancetracker.util.CommonUtils.SLASH;
-import static com.mypractice.assistancetracker.util.CommonUtils.STR_TRUE;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ACTION;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ID;
 import static com.mypractice.assistancetracker.util.CommonUtils.responseResult;
@@ -40,7 +38,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mypractice.assistancetracker.dto.PaymentDTO;
-import com.mypractice.assistancetracker.dto.PinCodeDTO;
 import com.mypractice.assistancetracker.service.PaymentModeService;
 
 /**

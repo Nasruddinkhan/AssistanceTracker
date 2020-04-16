@@ -34,6 +34,8 @@ import com.mypractice.assistancetracker.model.MstCode;
 import com.mypractice.assistancetracker.model.PaymentMode;
 import com.mypractice.assistancetracker.model.PersistentLogins;
 import com.mypractice.assistancetracker.model.PinCode;
+import com.mypractice.assistancetracker.model.Profession;
+import com.mypractice.assistancetracker.model.Reason;
 import com.mypractice.assistancetracker.model.Relationship;
 import com.mypractice.assistancetracker.model.State;
 import com.mypractice.assistancetracker.model.User;
@@ -75,7 +77,7 @@ public class AppConfig {
 	//	props.put(QUERY_CACHE_FACTORY, env.getProperty("hibernate.cache.second_level_cache"));
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setAnnotatedClasses(User.class, Authorities.class, City.class, PersistentLogins.class,
-				MstCode.class, Country.class, State.class, PinCode.class, PaymentMode.class, Relationship.class);
+				MstCode.class, Country.class, State.class, PinCode.class, PaymentMode.class, Relationship.class, Profession.class, Reason.class);
 		//factoryBean.setValidationMode(ValidationMode.NONE); 
 		return factoryBean;
 	}

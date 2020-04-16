@@ -61,6 +61,7 @@ public interface CommonUtils {
 	public static final int MST_LEN_20 = 20;
 	public static final int MST_LEN_50 = 50;
 	public static final int MST_LEN_100 = 100;
+	public static final int MST_LEN_1 = 1;
 	public static final String MST_CODE_NAME = "CODE_NAME";
 	public static final String MST_CODE_TYPE = "CODE_TYPE";
 	public static final int MST_LEN_15 = 15;
@@ -89,6 +90,7 @@ public interface CommonUtils {
 	public static final String STR_FALSE = "false";
 	public static final String PROFESSION_URL = "/profession";
 	public static final String PROFESSION = "profession";
+	public static final String PROFESSIONS="professions";
 	public static final String REASON_URL = "/needy_problems";
 	public static final String REASON = "needy_problems";
 	public static final String PAYMENT_MODE_URL = "/payment_mode";
@@ -109,6 +111,11 @@ public interface CommonUtils {
 	public static final String EDIT_DATE="EDIT_DATE";
 	public static final String ADD_DATE="ADD_DATE";
 	public static final String NAME="NAME";
+	public static final String PROFESSION_ID = "PROFESSION_ID";
+	public static final String PROFESSION_NAME = "PROFESSION_NAME";
+	public static final String REASON_NAME = "REASON_NAME";
+	public static final String REASON_ID = "REASON_ID";
+	public static final String REASONS="reasons";
 	public static boolean checkListNullOrEmpty(Collection<?> list) {
 		return CHECK_LIST_NULL_OR_EMPLTY.test(list);
 	}
