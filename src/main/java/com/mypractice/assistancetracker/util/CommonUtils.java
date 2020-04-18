@@ -39,6 +39,7 @@ public interface CommonUtils {
 	public static final String COUNTRY_NAME = "COUNTRY_NAME";
 	public static final String COUNTRY_MASTER = "COUNTRY_MASTER";
 	public static final int LEN_3 = 3;
+	public static final int LEN_10 = 10;
 	public static final int LEN_6 = 6;
 	public static final String STATE = "state";
 	public static final String STATE_URL = "/state";
@@ -99,6 +100,7 @@ public interface CommonUtils {
 	public static final String RELATIONSHIP_URL = "/relationship";
 	public static final String RELATIONSHIP = "relationship";
 	public static final String NEEDY_REFERED = "needy_refered";
+	public static final String NEEDY_REFEREDS = "needyrefereds";
 	public static final String NEEDY_REFERED_URL = "/needy_refered";
 	public static final String SequenceId_Generator = "com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGenerator";
 	public static final String TEN_DIGIT ="%010d";
@@ -116,6 +118,11 @@ public interface CommonUtils {
 	public static final String REASON_NAME = "REASON_NAME";
 	public static final String REASON_ID = "REASON_ID";
 	public static final String REASONS="reasons";
+	public static final String REFFERER="refferer";
+	public static final String REFFERER_ID="REFFERER_ID";            
+	public static final String REFFERER_NAME="REFFERER_NAME";          
+	public static final String REFFERER_MOBILE_NUMBER="REFFERER_MOBILE_NUMBER"; 
+	public static final String RELATIONSHIP_WITH_NEEDY="RELATIONSHIP_WITH_NEEDY";
 	public static boolean checkListNullOrEmpty(Collection<?> list) {
 		return CHECK_LIST_NULL_OR_EMPLTY.test(list);
 	}

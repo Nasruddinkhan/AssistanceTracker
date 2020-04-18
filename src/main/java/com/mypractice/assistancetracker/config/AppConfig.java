@@ -31,6 +31,7 @@ import com.mypractice.assistancetracker.model.Authorities;
 import com.mypractice.assistancetracker.model.City;
 import com.mypractice.assistancetracker.model.Country;
 import com.mypractice.assistancetracker.model.MstCode;
+import com.mypractice.assistancetracker.model.NeedyReffered;
 import com.mypractice.assistancetracker.model.PaymentMode;
 import com.mypractice.assistancetracker.model.PersistentLogins;
 import com.mypractice.assistancetracker.model.PinCode;
@@ -76,12 +77,11 @@ public class AppConfig {
 		props.put(CACHE_REGION_FACTORY, env.getProperty("hibernate.cache.ehcache"));
 	//	props.put(QUERY_CACHE_FACTORY, env.getProperty("hibernate.cache.second_level_cache"));
 		factoryBean.setHibernateProperties(props);
-		factoryBean.setAnnotatedClasses(User.class, Authorities.class, City.class, PersistentLogins.class,
+		factoryBean.setAnnotatedClasses(User.class, Authorities.class, City.class, PersistentLogins.class,NeedyReffered.class,
 				MstCode.class, Country.class, State.class, PinCode.class, PaymentMode.class, Relationship.class, Profession.class, Reason.class);
 		//factoryBean.setValidationMode(ValidationMode.NONE); 
 		return factoryBean;
 	}
-
 	@Bean
 	public HibernateTransactionManager getTransactionManager() {
 		HibernateTransactionManager transactionManager = new HibernateTransactionManager();

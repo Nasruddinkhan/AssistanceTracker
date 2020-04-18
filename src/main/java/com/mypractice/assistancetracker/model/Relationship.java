@@ -11,6 +11,7 @@ import static com.mypractice.assistancetracker.util.CommonUtils.LEN_1;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_100;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_50;
 import static com.mypractice.assistancetracker.util.CommonUtils.NAME;
+import static com.mypractice.assistancetracker.util.CommonUtils.NEEDY_REFERED;
 import static com.mypractice.assistancetracker.util.CommonUtils.RELATIONSHIP_MODE_PREFIX;
 import static com.mypractice.assistancetracker.util.CommonUtils.SEQ;
 import static com.mypractice.assistancetracker.util.CommonUtils.SequenceId_Generator;
@@ -21,16 +22,22 @@ import static com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGene
 import static org.hibernate.id.enhanced.SequenceStyleGenerator.INCREMENT_PARAM;
 import static com.mypractice.assistancetracker.util.CommonUtils.RELATIONSHIP;
 import java.time.LocalDateTime;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -58,6 +65,23 @@ public class Relationship {
 	@Column(name = EDIT_DATE)
 	@UpdateTimestamp
 	private LocalDateTime updateDateTime;
+	@OneToMany(mappedBy =RELATIONSHIP, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+	@LazyCollection(LazyCollectionOption.FALSE)
+	private Set<NeedyReffered> needReffereds;
+	
+	/**
+	 * @return the needReffereds
+	 */
+	public Set<NeedyReffered> getNeedReffereds() {
+		return needReffereds;
+	}
+
+	/**
+	 * @param needReffereds the needReffereds to set
+	 */
+	public void setNeedReffereds(Set<NeedyReffered> needReffereds) {
+		this.needReffereds = needReffereds;
+	}
 
 	/**
 	 * @return the relationshipId
