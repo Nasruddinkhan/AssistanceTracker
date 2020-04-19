@@ -15,6 +15,8 @@ import java.util.function.Predicate;
 public interface CommonUtils {
 	Predicate<Collection<?>> CHECK_LIST_NULL_OR_EMPLTY = l -> l == null || l.isEmpty();
 	Function<Boolean, String> RESPONSE_MSG = s -> s ? ErrorConstant.RECORD_SUCCESS : ErrorConstant.UPDATE_SUCCESS;
+	public static final String SHOW_ADD_MEMMBER_PEGE = "add_member";
+	public static final String  COMMON = "common";
 	public static final String MSG = "msg";
 	public static final String CSS = "css";
 	public static final int LEN_2 = 2;
@@ -43,6 +45,7 @@ public interface CommonUtils {
 	public static final int LEN_6 = 6;
 	public static final String STATE = "state";
 	public static final String STATE_URL = "/state";
+	public static final String GET = "get";
 	public static final String SLASH = "/";
 	public static final String RIDIRECT = "redirect";
 	public static final String URL_ACTION = ".do";
@@ -104,8 +107,10 @@ public interface CommonUtils {
 	public static final String NEEDY_REFERED_URL = "/needy_refered";
 	public static final String SequenceId_Generator = "com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGenerator";
 	public static final String TEN_DIGIT ="%010d";
+	public static final String FIFTEEN_DIGIT ="%015d";
 	public static final String PAYMENT_MODE_PREFIX = "PAYMODE_" ;
 	public static final String RELATIONSHIP_MODE_PREFIX = "RELATIONSHIP_" ;
+	public static final String MEMBER_MODE_PREFIX = "MEMBER" ;
 	public static final String RELATIONSHIPS="relationships";
 	public static final String SEQ = "SEQ" ;
 	public static final String LEN_1 = "1";

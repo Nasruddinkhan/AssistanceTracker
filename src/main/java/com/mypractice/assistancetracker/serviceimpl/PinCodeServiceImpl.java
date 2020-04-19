@@ -9,6 +9,8 @@ import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import javax.persistence.EntityNotFoundException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -77,6 +79,18 @@ public class PinCodeServiceImpl implements PinCodeService {
 	public void deletePinCode(String pinCode) {
 		// TODO Auto-generated method stub
 		pinCodeDao.deletePinCode( pinCodeDao.findPinCode(pinCode));
+	}
+
+	@Override
+	public String getPincode(String cityId) {
+		// TODO Auto-generated method stub
+		City city =  cityDao.findCity(cityId);
+		try {
+			return 	pinCodeDao.getPincode(city);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			throw new EntityNotFoundException(e.getMessage());
+		}
 	}
 
 }

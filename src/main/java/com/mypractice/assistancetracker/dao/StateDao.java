@@ -7,6 +7,7 @@ package com.mypractice.assistancetracker.dao;
 
 import java.util.List;
 
+import com.mypractice.assistancetracker.model.Country;
 import com.mypractice.assistancetracker.model.State;
 
 /**
@@ -37,5 +38,11 @@ public interface StateDao {
 	 * @param stateCode
 	 */
 	void deleteState(String stateCode);
+
+	/**
+	 * @param country
+	 * @return
+	 */
+	List<State> getStates(Country country);
 
 }

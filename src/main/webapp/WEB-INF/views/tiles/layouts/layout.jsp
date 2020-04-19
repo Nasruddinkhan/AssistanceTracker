@@ -43,40 +43,76 @@
 .error {
 	color: red;
 }
+
 .hideMe {
-
--webkit-animation: seconds 1.0s forwards;
-  -webkit-animation-iteration-count: 1;
-  -webkit-animation-delay: 5s;
-  animation: seconds 1.0s forwards;
-  animation-iteration-count: 1;
-  animation-delay: 5s;
-  position: relative;
-}
-@-webkit-keyframes seconds {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    left: -9999px; 
-    position: absolute;   
-  }
-}
-@keyframes seconds {
-  0% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-    left: -9999px;
-    position: absolute;     
-  }
-}
-.box-primary{
-box-shadow: 0 2px 10px rgba(0,0,0,.2) !important;
+	-webkit-animation: seconds 1.0s forwards;
+	-webkit-animation-iteration-count: 1;
+	-webkit-animation-delay: 5s;
+	animation: seconds 1.0s forwards;
+	animation-iteration-count: 1;
+	animation-delay: 5s;
+	position: relative;
 }
 
+@
+-webkit-keyframes seconds { 0% {
+	opacity: 1;
+}
+
+100%
+{
+opacity
+:
+ 
+0;
+left
+:
+ 
+-9999
+px
+;
+ 
+    
+position
+:
+ 
+absolute
+;
+   
+  
+}
+}
+@
+keyframes seconds { 0% {
+	opacity: 1;
+}
+
+100%
+{
+opacity
+:
+ 
+0;
+left
+:
+ 
+-9999
+px
+;
+
+    
+position
+:
+ 
+absolute
+;
+     
+  
+}
+}
+.box-primary {
+	box-shadow: 0 2px 10px rgba(0, 0, 0, .2) !important;
+}
 </style>
 
 </head>
@@ -317,24 +353,48 @@ box-shadow: 0 2px 10px rgba(0,0,0,.2) !important;
 	<!-- AdminLTE for demo purposes -->
 	<script
 		src="${pageContext.request.contextPath}/resources/dist/js/demo.js"></script>
+	<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+	<script>
+		var myContextPath = "${pageContext.request.contextPath}"
+	</script>
 	<!-- Page script -->
 	<script>
-  $(function () {
-    //Initialize Select2 Elements
-    $('.select2').select2()
+		$(function() {
+			//Initialize Select2 Elements
+			$('.select2').select2()
 
-  });
-  $(function () {
-    $('#example1').DataTable()
-    $('#example2').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script>
+		});
+		$(function() {
+			$('#example1').DataTable()
+			$('#example2').DataTable({
+				'paging' : true,
+				'lengthChange' : false,
+				'searching' : false,
+				'ordering' : true,
+				'info' : true,
+				'autoWidth' : false
+			})
+		})
+		$(document).ready(function() {
+			$('#memberCountry').on("change", function() {
+				let country = $('#memberCountry').val();
+				let url = "/common/get/" + country + "/country.do";
+				ajaxGetCall(url, 'sateList')
+			});
+			$('#memberstate').on("change", function() {
+				let city = $('#memberstate').val();
+				let url = "/common/get/" + city + "/state.do";
+				alert(url);
+				ajaxGetCall(url, 'cityList')
+			});
+			$('#membercity').on("change", function() {
+				let city = $('#membercity').val();
+				let url = "/common/get/" + city + "/city.do";
+				alert(url);
+				ajaxGetCall(url, 'pincodeList')
+			});
+			
+		});
+	</script>
 </body>
 </html>

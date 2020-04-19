@@ -38,4 +38,10 @@ public interface StateService {
 	 * @param stateCode
 	 */
 	void deleteState(String stateCode);
+
+	/**
+	 * @param countryId
+	 * @return
+	 */
+	List<CommonDropDown> getStates(String countryId);
 }

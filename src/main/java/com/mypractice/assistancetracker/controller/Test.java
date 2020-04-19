@@ -5,6 +5,11 @@
  */
 package com.mypractice.assistancetracker.controller;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
+import com.mypractice.assistancetracker.model.Authorities;
+import com.mypractice.assistancetracker.model.User;
+
 /**
  * @author nasru
  *
@@ -19,7 +24,11 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		Test t = new Test();
-		t.print(null);
+		User user = new User();
+		user.setEnabled(true);
+		user.setPassword( new BCryptPasswordEncoder().encode("Nasru@1992"));
+		Authorities auth = new Authorities(); 
+		auth.setAuthority("ROLE_MEMBER");
+		
 	}
 }

@@ -16,7 +16,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.mypractice.assistancetracker.dao.PaymentDao;
-import com.mypractice.assistancetracker.dto.PaymentDTO;
 import com.mypractice.assistancetracker.model.PaymentMode;
 
 /**

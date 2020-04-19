@@ -7,6 +7,7 @@ package com.mypractice.assistancetracker.dao;
 
 import java.util.List;
 
+import com.mypractice.assistancetracker.model.City;
 import com.mypractice.assistancetracker.model.PinCode;
 
 /**
@@ -35,5 +36,12 @@ public interface PinCodeDao {
 	 * @param findPinCode
 	 */
 	void deletePinCode(PinCode findPinCode);
+
+	/**
+	 * @param city
+	 * @return
+	 * @throws Exception 
+	 */
+	String getPincode(City city) throws Exception ;
 
 }

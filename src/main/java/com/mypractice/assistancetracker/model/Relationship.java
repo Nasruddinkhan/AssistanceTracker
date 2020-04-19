@@ -138,5 +138,4 @@ public class Relationship {
 	public void setUpdateDateTime(LocalDateTime updateDateTime) {
 		this.updateDateTime = updateDateTime;
 	}
-
 }

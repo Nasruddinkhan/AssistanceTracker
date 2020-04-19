@@ -14,9 +14,9 @@ import static com.mypractice.assistancetracker.util.CommonUtils.EDIT;
 import static com.mypractice.assistancetracker.util.CommonUtils.MSG;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST;
 import static com.mypractice.assistancetracker.util.CommonUtils.NEEDY_REFERED;
+import static com.mypractice.assistancetracker.util.CommonUtils.NEEDY_REFEREDS;
 import static com.mypractice.assistancetracker.util.CommonUtils.NEEDY_REFERED_URL;
 import static com.mypractice.assistancetracker.util.CommonUtils.OPEN_CURLY_BRESH;
-import static com.mypractice.assistancetracker.util.CommonUtils.REASON;
 import static com.mypractice.assistancetracker.util.CommonUtils.RIDIRECT;
 import static com.mypractice.assistancetracker.util.CommonUtils.SAVE;
 import static com.mypractice.assistancetracker.util.CommonUtils.SLASH;
@@ -24,7 +24,7 @@ import static com.mypractice.assistancetracker.util.CommonUtils.URL_ACTION;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ID;
 import static com.mypractice.assistancetracker.util.CommonUtils.responseResult;
 import static com.mypractice.assistancetracker.util.ErrorConstant.SUCCESS;
-import static com.mypractice.assistancetracker.util.CommonUtils.NEEDY_REFEREDS;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,7 +39,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mypractice.assistancetracker.dto.NeedyRefferedDto;
-import com.mypractice.assistancetracker.dto.ReasonDto;
 import com.mypractice.assistancetracker.service.NeedyRefferedSerive;
 
 /**

@@ -90,5 +90,17 @@ public class StateServiceImpl implements StateService {
 		// TODO Auto-generated method stub
 		stateDao.deleteState(stateCode);
 	}
+	@Override
+	public List<CommonDropDown> getStates(String countryId) {
+		// TODO Auto-generated method stub
+		Country country = countryDao.findByCountry(countryId);
+		return stateDao.getStates(country).stream().map((Function<? super State, ? extends CommonDropDown>)obj->{
+			CommonDropDown commonDropDown = new CommonDropDown();
+			commonDropDown.setKey(obj.getStateCode());
+			commonDropDown.setValue(obj.getStateName());
+			return commonDropDown;
+		}).collect(Collectors.toList());
+
+	}
 
 }

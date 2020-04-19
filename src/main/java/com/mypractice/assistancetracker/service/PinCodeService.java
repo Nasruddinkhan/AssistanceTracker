@@ -36,4 +36,10 @@ public interface PinCodeService {
 	 * @param pinCode
 	 */
 	public void deletePinCode(String pinCode);
+
+	/**
+	 * @param cityId
+	 * @return
+	 */
+	public String getPincode(String cityId);
 }

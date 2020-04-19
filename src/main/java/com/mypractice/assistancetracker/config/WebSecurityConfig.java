@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.rememberme.PersistentTokenRepository;
 
 @Configuration
@@ -47,7 +46,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests().anyRequest().hasAnyRole("ADMIN", "USER")
+		http.authorizeRequests().anyRequest().authenticated()
+		//.hasAnyRole("ROLE_ADMIN", "ROLE_MEMBER")
 		.and()
 		.authorizeRequests().antMatchers("/login.do**").permitAll()
 		.and()

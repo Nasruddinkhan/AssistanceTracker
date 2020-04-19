@@ -78,4 +78,10 @@
 		<put-attribute name="body"
 			value="/WEB-INF/views/pages/master/needy_refered.jsp" />
 	</definition>
+	<definition name="add_member" extends="base-definition">
+		<put-attribute name="title" value="Welcome" />
+		<put-attribute name="body"
+			value="/WEB-INF/views/pages/member/add_member.jsp" />
+	</definition>
+	
 </tiles-definitions>

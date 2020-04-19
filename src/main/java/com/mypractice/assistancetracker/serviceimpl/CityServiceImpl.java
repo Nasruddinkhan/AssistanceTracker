@@ -21,6 +21,7 @@ import com.mypractice.assistancetracker.dto.CityDTO;
 import com.mypractice.assistancetracker.dto.CommonDropDown;
 import com.mypractice.assistancetracker.dto.StateDto;
 import com.mypractice.assistancetracker.model.City;
+import com.mypractice.assistancetracker.model.State;
 import com.mypractice.assistancetracker.service.CityService;
 import com.mypractice.assistancetracker.service.StateService;
 
@@ -98,6 +99,15 @@ public class CityServiceImpl implements CityService {
 	public void deleteCity(String cityCode) {
 		// TODO Auto-generated method stub
 		cityDao.deleteCity(cityDao.findCity(cityCode));
+	}
+
+	@Override
+	public List<CommonDropDown> getCities(String stateId) {
+		// TODO Auto-generated method stub
+		State state =  stateDao.findState(stateId);
+		return  cityDao.getCities(state).stream().map((Function<? super City, ? extends CommonDropDown>)obj->{
+			return new CommonDropDown(obj.getCityCode() , obj.getCityName());
+		}).collect(Collectors.toList());
 	}
 
 }

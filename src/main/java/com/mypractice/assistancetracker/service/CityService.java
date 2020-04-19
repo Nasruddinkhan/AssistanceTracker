@@ -42,4 +42,10 @@ public interface CityService {
 	 */
 	public void deleteCity(String cityCode);
 
+	/**
+	 * @param stateId
+	 * @return
+	 */
+	public List<CommonDropDown> getCities(String stateId);
+
 }

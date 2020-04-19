@@ -8,9 +8,8 @@ package com.mypractice.assistancetracker.controller;
 import static com.mypractice.assistancetracker.util.CommonUtils.CLOSE_CURLY_BRESH;
 import static com.mypractice.assistancetracker.util.CommonUtils.COLON;
 import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRIES;
-import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY;
-import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY_URL;
 import static com.mypractice.assistancetracker.util.CommonUtils.CSS;
+import static com.mypractice.assistancetracker.util.CommonUtils.DELETE;
 import static com.mypractice.assistancetracker.util.CommonUtils.EDIT;
 import static com.mypractice.assistancetracker.util.CommonUtils.MSG;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST;
@@ -25,7 +24,6 @@ import static com.mypractice.assistancetracker.util.CommonUtils.URL_ACTION;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ID;
 import static com.mypractice.assistancetracker.util.CommonUtils.responseResult;
 import static com.mypractice.assistancetracker.util.ErrorConstant.SUCCESS;
-import static com.mypractice.assistancetracker.util.CommonUtils.DELETE;
 
 import javax.validation.Valid;
 

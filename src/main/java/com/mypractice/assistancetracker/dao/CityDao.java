@@ -8,6 +8,7 @@ package com.mypractice.assistancetracker.dao;
 import java.util.List;
 
 import com.mypractice.assistancetracker.model.City;
+import com.mypractice.assistancetracker.model.State;
 
 /**
  * @author nasru
@@ -35,6 +36,12 @@ public interface CityDao {
 	 * @param findCity
 	 */
 	void deleteCity(City city);
+
+	/**
+	 * @param state
+	 * @return
+	 */
+	List<City> getCities(State state);
 
 	
 }
