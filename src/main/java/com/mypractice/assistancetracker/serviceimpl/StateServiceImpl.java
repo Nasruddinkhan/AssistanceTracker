@@ -93,6 +93,7 @@ public class StateServiceImpl implements StateService {
 	@Override
 	public List<CommonDropDown> getStates(String countryId) {
 		// TODO Auto-generated method stub
+		
 		Country country = countryDao.findByCountry(countryId);
 		return stateDao.getStates(country).stream().map((Function<? super State, ? extends CommonDropDown>)obj->{
 			CommonDropDown commonDropDown = new CommonDropDown();

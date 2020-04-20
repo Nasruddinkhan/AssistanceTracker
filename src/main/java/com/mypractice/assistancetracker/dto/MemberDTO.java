@@ -5,29 +5,55 @@
  */
 package com.mypractice.assistancetracker.dto;
 
+import static com.mypractice.assistancetracker.util.CommonUtils.EMAIL_INVALID_MSG;
+import static com.mypractice.assistancetracker.util.CommonUtils.EMAIL_REGEX_PATTERN;
 import static com.mypractice.assistancetracker.util.CommonUtils.FIELD_INVALID;
-
+import static com.mypractice.assistancetracker.util.CommonUtils.INVALID_FIELD_SIZE;
+import static com.mypractice.assistancetracker.util.CommonUtils.LEN_10;
+import static com.mypractice.assistancetracker.util.CommonUtils.LEN_200;
+import static com.mypractice.assistancetracker.util.CommonUtils.ONLY_CHAR_ALLOW;
+import static com.mypractice.assistancetracker.util.CommonUtils.ONLY_CHAR_PATTERN;
+import static com.mypractice.assistancetracker.util.CommonUtils.ONLY_DIGIT;
+import static com.mypractice.assistancetracker.util.CommonUtils.ONLY_DIGIT_ALLOW;
+import static com.mypractice.assistancetracker.util.CommonUtils.START_DOLLAR;
+import static com.mypractice.assistancetracker.util.CommonUtils.LEN_50;
+import static com.mypractice.assistancetracker.util.CommonUtils.LEN_3;
+import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_20;
+import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_100;
 import java.time.LocalDateTime;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
-
 /**
  * @author nasru
  *
  */
 public class MemberDTO {
 	private String memberId;
+	@Pattern(regexp = ONLY_CHAR_PATTERN + START_DOLLAR, message = ONLY_CHAR_ALLOW)
 	@NotBlank(message = FIELD_INVALID)
+	@Size(max =LEN_50 , min =LEN_3 , message = INVALID_FIELD_SIZE)
 	private String firstName;
+	@Pattern(regexp = ONLY_CHAR_PATTERN + START_DOLLAR, message = ONLY_CHAR_ALLOW)
 	@NotBlank(message = FIELD_INVALID)
+	@Size(max =MST_LEN_20 , min =LEN_3 , message = INVALID_FIELD_SIZE)  
 	private String lastName;
+	@Pattern(regexp = ONLY_CHAR_PATTERN + START_DOLLAR, message = ONLY_CHAR_ALLOW)
 	@NotBlank(message = FIELD_INVALID)
+	@Size(max =MST_LEN_20 , min =LEN_3 , message = INVALID_FIELD_SIZE)
 	private String nickName;
+	@Pattern(regexp = ONLY_DIGIT + START_DOLLAR, message = ONLY_DIGIT_ALLOW)
 	@NotBlank(message = FIELD_INVALID)
+	@Size(max = LEN_10, min =LEN_10 , message = INVALID_FIELD_SIZE)
 	private String contactNo;
+	@Pattern(regexp = ONLY_DIGIT + START_DOLLAR, message = ONLY_DIGIT_ALLOW)
 	@NotBlank(message = FIELD_INVALID)
+	@Size(max =LEN_10 , min =LEN_10 , message = INVALID_FIELD_SIZE)
 	private String cantactNo1;
+	@Pattern(regexp = EMAIL_REGEX_PATTERN, message = EMAIL_INVALID_MSG)
 	@NotBlank(message = FIELD_INVALID)
+	@Size(max =MST_LEN_100 , min =LEN_10 , message = INVALID_FIELD_SIZE)
 	private String emailId;
 	@NotBlank(message = FIELD_INVALID)
 	private String profession;
@@ -37,12 +63,15 @@ public class MemberDTO {
 	private String state;
 	@NotBlank(message = FIELD_INVALID)
 	private String city;
-	//@NotBlank(message = FIELD_INVALID)
+	@NotBlank(message = FIELD_INVALID)
 	private String pinCode;
 	@NotBlank(message = FIELD_INVALID)
+	@Size(max =LEN_50 , min =LEN_3 , message = INVALID_FIELD_SIZE)
 	private String street;
 	@NotBlank(message = FIELD_INVALID)
+	@Size(max =LEN_200 , min =LEN_10 , message = INVALID_FIELD_SIZE)
 	private String address1;
+	@Size(max =LEN_200 , min =LEN_10 , message = INVALID_FIELD_SIZE)
 	@NotBlank(message = FIELD_INVALID)
 	private String address2;
 	private int counter;

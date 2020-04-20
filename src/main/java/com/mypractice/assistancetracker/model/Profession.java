@@ -6,6 +6,7 @@
 package com.mypractice.assistancetracker.model;
 
 import static com.mypractice.assistancetracker.util.CommonUtils.ADD_DATE;
+import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY;
 import static com.mypractice.assistancetracker.util.CommonUtils.EDIT_DATE;
 import static com.mypractice.assistancetracker.util.CommonUtils.MASTER;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_1;
@@ -17,16 +18,22 @@ import static com.mypractice.assistancetracker.util.CommonUtils.SEQ;
 import static com.mypractice.assistancetracker.util.CommonUtils.UNDER_LINE;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.annotations.UpdateTimestamp;
 
 /**
@@ -49,6 +56,24 @@ public class Profession {
 	@Column(name = EDIT_DATE)
 	@UpdateTimestamp
 	private LocalDateTime updateDateTime;
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy =PROFESSION, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+	private List<User> users; 
+	
+	
+	/**
+	 * @return the users
+	 */
+	public List<User> getUsers() {
+		return users;
+	}
+	/**
+	 * @param users the users to set
+	 */
+	public void setUsers(List<User> users) {
+		this.users = users;
+	}
 	/**
 	 * @return the professionId
 	 */

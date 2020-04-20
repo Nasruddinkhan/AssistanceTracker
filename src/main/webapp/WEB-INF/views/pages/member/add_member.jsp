@@ -30,7 +30,7 @@
 						<div class="form-group">
 							<label for="paymentModeId">Nick Name</label>
 							<form:input path="nickName" type="text" class="form-control" />
-						<form:errors path="lastName" cssClass="error" />
+							<form:errors path="nickName" cssClass="error" />
 						</div>
 					</div>
 				</div>
@@ -39,21 +39,21 @@
 						<div class="form-group">
 							<label for="paymentModeId">Contact No</label>
 							<form:input path="contactNo" type="text" class="form-control" />
-							<form:errors path="lastName" cssClass="error" />
+							<form:errors path="contactNo" cssClass="error" />
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="paymentModeId">Contact No1</label>
 							<form:input path="cantactNo1" type="text" class="form-control" />
-							<form:errors path="lastName" cssClass="error" />
+							<form:errors path="cantactNo1" cssClass="error" />
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="paymentModeId">Email Id</label>
 							<form:input path="emailId" type="text" class="form-control" />
-							<form:errors path="lastName" cssClass="error" />
+							<form:errors path="emailId" cssClass="error" />
 						</div>
 					</div>
 				</div>
@@ -61,14 +61,19 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="profession"> Profession </label>
-							<form:input path="profession" type="text" class="form-control" />
-							<form:errors path="lastName" cssClass="error" />
+							<form:select path="profession" type="text" class="form-control">
+								<form:option value="">----SELECT PROFESSION----</form:option>
+								<form:options items="${professions}" itemValue="key"
+									itemLabel="value" />
+							</form:select>
+							<form:errors path="profession" cssClass="error" />
 						</div>
 					</div>
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="paymentModeId">Country</label>
-							<form:select path="country" id="memberCountry" class="form-control">
+							<form:select path="country" id="memberCountry"
+								class="form-control">
 								<form:option value="">----SELECT COUNTRY----</form:option>
 								<form:options items="${countries}" itemValue="key"
 									itemLabel="value" />
@@ -80,7 +85,7 @@
 						<div class="form-group">
 							<label for="paymentModeId">State</label>
 							<form:select path="state" id="memberstate" class="form-control">
-							<form:options items="${states}" itemValue="key"
+								<form:options items="${states}" itemValue="key"
 									itemLabel="value" />
 							</form:select>
 							<form:errors path="state" cssClass="error" />
@@ -91,8 +96,9 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="paymentModeId"> City </label>
-							<form:select path="city"  id="membercity"  type="text" class="form-control" >
-							<form:options items="${cities}" itemValue="key"
+							<form:select path="city" id="membercity" type="text"
+								class="form-control">
+								<form:options items="${cities}" itemValue="key"
 									itemLabel="value" />
 							</form:select>
 							<form:errors path="city" cssClass="error" />
@@ -101,7 +107,8 @@
 					<div class="col-md-4">
 						<div class="form-group">
 							<label for="paymentModeId">Pin code</label>
-							<form:input path="pinCode"  id="pinCode" type="text" readonly="true" class="form-control" />
+							<form:input path="pinCode" id="pinCode" type="text"
+								readonly="true" class="form-control" />
 							<form:errors path="pinCode" cssClass="error" />
 						</div>
 					</div>

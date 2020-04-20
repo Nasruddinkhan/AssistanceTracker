@@ -13,8 +13,19 @@ import java.util.function.Predicate;
  * @author nasru "^[A-Z]{3}"
  */
 public interface CommonUtils {
-	Predicate<Collection<?>> CHECK_LIST_NULL_OR_EMPLTY = l -> l == null || l.isEmpty();
+	static Predicate<Collection<?>> CHECK_LIST_NULL_OR_EMPLTY = l -> l == null || l.isEmpty();
+	static Predicate<String> isEmptyString =s-> s == null || s.isEmpty();
+	public final static String EMAIL_ID = "EMAIL_ID";
+	public final static String ALTERNATE_NO = "ALTERNATE_NO";
+	public final static String CONTACT_NO = "CONTACT_NO";
+	public final static String NICK_NAME = "NICK_NAME";
+	public final static String LAST_NAME = "LAST_NAME";
+	public static final String  FIRST_NAME = "FIRST_NAME";
+	public static final String STREET = "STREET";
+	public static final String ADDRESS_LINE1 = "ADDRESS_LINE1";
+	public static final String ADDRESS_LINE2 = "ADDRESS_LINE2";
 	Function<Boolean, String> RESPONSE_MSG = s -> s ? ErrorConstant.RECORD_SUCCESS : ErrorConstant.UPDATE_SUCCESS;
+	public static final int LEN_200 = 200;
 	public static final String SHOW_ADD_MEMMBER_PEGE = "add_member";
 	public static final String  COMMON = "common";
 	public static final String MSG = "msg";
@@ -26,6 +37,7 @@ public interface CommonUtils {
 	public static final String ONLY_DIGIT = "^[0-9]";
 	public static final String ONLY_APHA_CHAR_PATTERN = "^[A-Z]";
 	public static final String ONLY_CHAR_PATTERN = "^[A-Za-z\\s]";
+	public static final String EMAIL_REGEX_PATTERN = "^[\\w!#$%&'*+/=?`{|}~^-]+(?:\\.[\\w!#$%&'*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$";
 	public static final String OPEN_CURLY_BRESH = "{";
 	public static final String CLOSE_CURLY_BRESH = "}";
 	public static final String COUNTRY_CODE_INVALID = "{country.countrycode.empty}";
@@ -34,6 +46,7 @@ public interface CommonUtils {
 	public static final String ONLY_ALPHABET_ALLOW = "{country.fieldname.alphachar}";
 	public static final String ONLY_CHAR_ALLOW = "{country.fieldname.onlychar}";
 	public static final String ONLY_DIGIT_ALLOW = "{fieldname.onlydigit}";
+	public static final String EMAIL_INVALID_MSG="{fieldname.emailinvalid}";
 	public static final String URL_ID = "ID";
 	public static final String FIELD_INVALID = "{field.empty}";
 	public static final int LEN_50 = 50;
@@ -58,6 +71,7 @@ public interface CommonUtils {
 	public static final String CITY = "city";
 	public static final String PINCODE_URL = "/pincode";
 	public static final String PINCODE = "pincode";
+	public static final String PIN__CODE = "pinCode";
 	public static final String COLON = ":";
 	public static final String DROPDOWN_BEAN = "dropdownbean";
 	public static final String DEFAULT_ERROR_VIEW = "error";
@@ -124,14 +138,19 @@ public interface CommonUtils {
 	public static final String REASON_ID = "REASON_ID";
 	public static final String REASONS="reasons";
 	public static final String REFFERER="refferer";
+	public static final String ADDRESS = "ADDRESS";
 	public static final String REFFERER_ID="REFFERER_ID";            
 	public static final String REFFERER_NAME="REFFERER_NAME";          
 	public static final String REFFERER_MOBILE_NUMBER="REFFERER_MOBILE_NUMBER"; 
 	public static final String RELATIONSHIP_WITH_NEEDY="RELATIONSHIP_WITH_NEEDY";
+	public static final  String ADDRESS_ID = "ADDRESS_ID";
 	public static boolean checkListNullOrEmpty(Collection<?> list) {
 		return CHECK_LIST_NULL_OR_EMPLTY.test(list);
 	}
 	public static String responseResult(String isNew) {
 		return RESPONSE_MSG.apply(Boolean.valueOf(isNew));
+	}
+	public static boolean isEmptyString(String inputStr) {
+		return isEmptyString.test(inputStr);
 	}
 }

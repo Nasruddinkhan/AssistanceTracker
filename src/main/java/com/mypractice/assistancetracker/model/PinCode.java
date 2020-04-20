@@ -5,22 +5,29 @@
  */
 package com.mypractice.assistancetracker.model;
 
+import static com.mypractice.assistancetracker.util.CommonUtils.CITY;
 import static com.mypractice.assistancetracker.util.CommonUtils.CITY_CODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_6;
 import static com.mypractice.assistancetracker.util.CommonUtils.MASTER;
 import static com.mypractice.assistancetracker.util.CommonUtils.PINCODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.PIN_CODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.UNDER_LINE;
+import static com.mypractice.assistancetracker.util.CommonUtils.PIN__CODE;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 /**
  * @author nasru
@@ -38,6 +45,10 @@ public class PinCode {
 	@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
     @JoinColumn(name = CITY_CODE)
     private City city;
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy =PIN__CODE, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+	private List<Address> address;
 
 	/**
 	 * @return the pinCode

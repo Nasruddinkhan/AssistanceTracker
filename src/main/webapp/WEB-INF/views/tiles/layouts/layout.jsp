@@ -62,24 +62,36 @@
 100%
 {
 opacity
+
+
 :
+
  
+
 0;
 left
+
+
 :
+
  
+
 -9999
 px
+
+
 ;
- 
-    
 position
+
+
 :
+
  
+
 absolute
+
+
 ;
-   
-  
 }
 }
 @
@@ -90,24 +102,36 @@ keyframes seconds { 0% {
 100%
 {
 opacity
+
+
 :
+
  
+
 0;
 left
+
+
 :
+
  
+
 -9999
 px
-;
 
-    
-position
-:
- 
-absolute
+
 ;
-     
-  
+position
+
+
+:
+
+ 
+
+absolute
+
+
+;
 }
 }
 .box-primary {
@@ -378,22 +402,25 @@ absolute
 		$(document).ready(function() {
 			$('#memberCountry').on("change", function() {
 				let country = $('#memberCountry').val();
+				$('#memberstate').val('');
+				$('#membercity').val('');
+				$("#pinCode").val('');
 				let url = "/common/get/" + country + "/country.do";
 				ajaxGetCall(url, 'sateList')
 			});
 			$('#memberstate').on("change", function() {
 				let city = $('#memberstate').val();
 				let url = "/common/get/" + city + "/state.do";
-				alert(url);
+				$('#membercity').val('');
+				$("#pinCode").val('');
 				ajaxGetCall(url, 'cityList')
 			});
 			$('#membercity').on("change", function() {
+				$("#pinCode").val('');
 				let city = $('#membercity').val();
 				let url = "/common/get/" + city + "/city.do";
-				alert(url);
 				ajaxGetCall(url, 'pincodeList')
 			});
-			
 		});
 	</script>
 </body>

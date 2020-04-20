@@ -27,6 +27,7 @@ import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import com.mypractice.assistancetracker.model.Address;
 import com.mypractice.assistancetracker.model.Authorities;
 import com.mypractice.assistancetracker.model.City;
 import com.mypractice.assistancetracker.model.Country;
@@ -78,7 +79,7 @@ public class AppConfig {
 	//	props.put(QUERY_CACHE_FACTORY, env.getProperty("hibernate.cache.second_level_cache"));
 		factoryBean.setHibernateProperties(props);
 		factoryBean.setAnnotatedClasses(User.class, Authorities.class, City.class, PersistentLogins.class,NeedyReffered.class,
-				MstCode.class, Country.class, State.class, PinCode.class, PaymentMode.class, Relationship.class, Profession.class, Reason.class);
+				MstCode.class, Country.class, State.class, PinCode.class, PaymentMode.class,Address.class, Relationship.class, Profession.class, Reason.class);
 		//factoryBean.setValidationMode(ValidationMode.NONE); 
 		return factoryBean;
 	}

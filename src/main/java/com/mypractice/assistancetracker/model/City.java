@@ -13,9 +13,11 @@ import static com.mypractice.assistancetracker.util.CommonUtils.LEN_2;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_3;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_50;
 import static com.mypractice.assistancetracker.util.CommonUtils.MASTER;
+import static com.mypractice.assistancetracker.util.CommonUtils.STATE;
 import static com.mypractice.assistancetracker.util.CommonUtils.STATE_CODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.UNDER_LINE;
 
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Cacheable;
@@ -60,6 +62,10 @@ public class City {
 	@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	@LazyCollection(LazyCollectionOption.FALSE)
 	private Set<PinCode> pinCodes;
+	
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy =CITY, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+	private List<Address> address; 
 	
 	/**
 	 * 

@@ -15,6 +15,7 @@ import static com.mypractice.assistancetracker.util.CommonUtils.LEN_50;
 import static com.mypractice.assistancetracker.util.CommonUtils.NUMERIC_CODE;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.Cacheable;
@@ -52,7 +53,10 @@ public class Country implements Serializable {
 	private String alpha2Code;
 	@Column(name = NUMERIC_CODE, length = LEN_3)
 	private String numbericCode;
-
+	@LazyCollection(LazyCollectionOption.FALSE)
+	@OneToMany(mappedBy =COUNTRY, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
+	private List<Address> address; 
+	
 	@org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 	@OneToMany(mappedBy =COUNTRY, fetch = FetchType.LAZY, cascade = CascadeType.ALL, orphanRemoval = false)
 	@LazyCollection(LazyCollectionOption.FALSE)
