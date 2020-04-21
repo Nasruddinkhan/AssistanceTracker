@@ -23,14 +23,18 @@ public class UserDetailsServiceImp implements UserDetailsService {
     User user = userDetailsDao.findUserByUsername(username);
     UserBuilder builder = null;
     if (user != null) {
-      
-      builder = org.springframework.security.core.userdetails.User.withUsername(username);
-      builder.disabled(!user.isEnabled());
-      builder.password(user.getPassword());
-      String[] authorities = user.getAuthorities()
-          .stream().map(a -> a.getAuthority()).toArray(String[]::new);
-      
-      builder.authorities(authorities);
+
+    	builder = org.springframework.security.core.userdetails.User.withUsername(username);
+    	builder.disabled(!user.isEnabled());
+    	builder.password(user.getPassword());
+    	user.getAuthorities()
+    	.stream().forEach(a->{
+    		System.out.println(a.getAuthority());
+    	});
+
+    	String[] authorities = user.getAuthorities()
+    			.stream().map(a -> a.getAuthority()).toArray(String[]::new);
+    	builder.authorities(authorities);
     } else {
       throw new UsernameNotFoundException("User not found.");
     }

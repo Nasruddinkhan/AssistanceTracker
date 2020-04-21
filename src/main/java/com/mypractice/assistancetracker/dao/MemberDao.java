@@ -5,6 +5,8 @@
  */
 package com.mypractice.assistancetracker.dao;
 
+import java.util.List;
+
 import com.mypractice.assistancetracker.model.User;
 
 /**
@@ -17,5 +19,16 @@ public interface MemberDao {
 	 * @param user
 	 */
 	void saveMember(User user);
+
+	/**
+	 * @param startPos
+	 * @return
+	 */
+	List<User> findAllMember(int startPos);
+
+	/**
+	 * @return
+	 */
+	Long getMemeberPageCount();
 
 }

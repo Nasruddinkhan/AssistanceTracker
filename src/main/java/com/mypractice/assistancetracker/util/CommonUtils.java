@@ -15,6 +15,7 @@ import java.util.function.Predicate;
 public interface CommonUtils {
 	static Predicate<Collection<?>> CHECK_LIST_NULL_OR_EMPLTY = l -> l == null || l.isEmpty();
 	static Predicate<String> isEmptyString =s-> s == null || s.isEmpty();
+	public final static int PAGE_SIZE = 1;
 	public final static String EMAIL_ID = "EMAIL_ID";
 	public final static String ALTERNATE_NO = "ALTERNATE_NO";
 	public final static String CONTACT_NO = "CONTACT_NO";
@@ -108,6 +109,7 @@ public interface CommonUtils {
 	public static final String STR_FALSE = "false";
 	public static final String PROFESSION_URL = "/profession";
 	public static final String PROFESSION = "profession";
+	public static final String AUTHORITIES = "authorities"; 
 	public static final String PROFESSIONS="professions";
 	public static final String REASON_URL = "/needy_problems";
 	public static final String REASON = "needy_problems";

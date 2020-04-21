@@ -24,8 +24,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Version;
@@ -55,9 +56,15 @@ public class User {
 	@Column(name = "ENABLED", nullable = false)
 	private boolean enabled;
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
-	private Set<Authorities> authorities = new HashSet<>();
 
+	@ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+        name = "USER_ROLE", 
+        joinColumns = { @JoinColumn(name = "USERNAME") }, 
+        inverseJoinColumns = { @JoinColumn(name = "AUTHORITY_ID") }
+    )
+    Set<Authorities> authorities = new HashSet<>();
+	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn (name = CommonUtils.ADDRESS_ID)
 	private Address address;
@@ -272,5 +279,4 @@ public class User {
 	public void setUpdateDateTime(LocalDateTime updateDateTime) {
 		this.updateDateTime = updateDateTime;
 	}
-
 }

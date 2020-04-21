@@ -6,7 +6,6 @@
 package com.mypractice.assistancetracker.model;
 
 import static com.mypractice.assistancetracker.util.CommonUtils.ADD_DATE;
-import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY;
 import static com.mypractice.assistancetracker.util.CommonUtils.EDIT_DATE;
 import static com.mypractice.assistancetracker.util.CommonUtils.MASTER;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_1;

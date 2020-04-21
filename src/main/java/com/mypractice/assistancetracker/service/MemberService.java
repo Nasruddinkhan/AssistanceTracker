@@ -25,4 +25,15 @@ public interface MemberService {
 	 */
 	void saveMember(MemberDTO memberDTO);
 
+	/**
+	 * @param pageNo
+	 * @return
+	 */
+	List<MemberDTO> findAllMember(int pageNo);
+
+	/**
+	 * @return
+	 */
+	Long getMemeberPageCount();
+
 }

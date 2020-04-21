@@ -54,8 +54,13 @@ public class MemberController {
 	private CityService cityService;
 
 	@GetMapping(SHOW_MEMBER_PAGE)
-	public String showMemberPage() {
+	public String showMemberPage(ModelMap model) {
+		findAllMember(model, 0);
 		return MEMBER_PAGE;
+	}
+	private void findAllMember(ModelMap model, int pageNo){
+		model.addAttribute("pageCount", memberService.getMemeberPageCount());
+		model.addAttribute("memberList", memberService.findAllMember(pageNo));
 	}
 
 	@GetMapping(SLASH + SHOW_ADD_MEMMBER_PEGE)

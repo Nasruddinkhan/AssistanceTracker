@@ -15,6 +15,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.mypractice.assistancetracker.dao.AuthoritiesDao;
 import com.mypractice.assistancetracker.dao.CityDao;
 import com.mypractice.assistancetracker.dao.CountryDao;
 import com.mypractice.assistancetracker.dao.MemberDao;
@@ -29,6 +30,7 @@ import com.mypractice.assistancetracker.model.Authorities;
 import com.mypractice.assistancetracker.model.User;
 import com.mypractice.assistancetracker.service.MemberService;
 import com.mypractice.assistancetracker.service.ProfessionService;
+import com.mypractice.assistancetracker.util.CommonUtils;
 
 /**
  * @author nasru
@@ -51,7 +53,8 @@ public class MemberServiceImpl implements MemberService {
 	private ProfessionDao profesionDAO;
 	@Autowired
 	private MemberDao memberDao;
-	
+	@Autowired
+	private AuthoritiesDao authoriseDao;
 	@Autowired
 	@Override
 	public List<CommonDropDown> getProfession() {
@@ -79,9 +82,12 @@ public class MemberServiceImpl implements MemberService {
 		address.setStreet(memberDTO.getStreet());
 		user.setAddress(address);
 		user.setProfession(profesionDAO.editProfession(Integer.valueOf(memberDTO.getProfession())));
+		Authorities authorities2 = authoriseDao.findRole("MEMBER_ROLE");
 		Set<Authorities> authorities= user.getAuthorities();
-		Authorities authorities2 = new Authorities();
-		authorities2.setAuthority("MEMBER_ROLE");
+		if(authorities2 == null) {
+			authorities2 = new Authorities();
+			authorities2.setAuthority("MEMBER_ROLE");
+		}
 		authorities.add(authorities2);
 		user.setAuthorities(authorities);
 		user.setPassword( new BCryptPasswordEncoder().encode("Nasru@1992"));
@@ -91,6 +97,28 @@ public class MemberServiceImpl implements MemberService {
 		user.setCantactNo1(memberDTO.getCantactNo1());
 		user.setNickName(memberDTO.getNickName());
 		memberDao.saveMember(user);
+	}
+
+	@Override
+	public List<MemberDTO> findAllMember(int pageNo) {
+		// TODO Auto-generated method stub
+		int startPos=0;
+		startPos=(pageNo*CommonUtils.PAGE_SIZE)-CommonUtils.PAGE_SIZE;
+		List<User> user =  memberDao.findAllMember(startPos);
+		return null;
+	}
+
+	@Override
+	public Long getMemeberPageCount() {
+		// TODO Auto-generated method stub
+		Long count=0l;
+		try {
+			count = memberDao.getMemeberPageCount();
+			System.out.println("MemberServiceImpl.getMemeberPageCount() count ["+count+"]");
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+		return count;
 	}
 
 }
