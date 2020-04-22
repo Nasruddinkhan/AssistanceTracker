@@ -5,10 +5,13 @@
  */
 package com.mypractice.assistancetracker.controller;
 
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-
-import com.mypractice.assistancetracker.model.Authorities;
-import com.mypractice.assistancetracker.model.User;
+import static com.mypractice.assistancetracker.util.CommonUtils.CLOSE_CURLY_BRESH;
+import static com.mypractice.assistancetracker.util.CommonUtils.OPEN_CURLY_BRESH;
+import static com.mypractice.assistancetracker.util.CommonUtils.PAGINATION;
+import static com.mypractice.assistancetracker.util.CommonUtils.SHOW_MEMBER_PAGE;
+import static com.mypractice.assistancetracker.util.CommonUtils.SLASH;
+import static com.mypractice.assistancetracker.util.CommonUtils.URL_ACTION;
+import static com.mypractice.assistancetracker.util.CommonUtils.URL_ID;
 
 /**
  * @author nasru
@@ -24,11 +27,7 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		User user = new User();
-		user.setEnabled(true);
-		user.setPassword( new BCryptPasswordEncoder().encode("Nasru@1992"));
-		Authorities auth = new Authorities(); 
-		auth.setAuthority("ROLE_MEMBER");
+		System.out.println(SHOW_MEMBER_PAGE+SLASH+OPEN_CURLY_BRESH+URL_ID+CLOSE_CURLY_BRESH+SLASH+PAGINATION+URL_ACTION);
 		
 	}
 }

@@ -15,7 +15,8 @@ import java.util.function.Predicate;
 public interface CommonUtils {
 	static Predicate<Collection<?>> CHECK_LIST_NULL_OR_EMPLTY = l -> l == null || l.isEmpty();
 	static Predicate<String> isEmptyString =s-> s == null || s.isEmpty();
-	public final static int PAGE_SIZE = 1;
+	public final static int PAGE_SIZE = 3;
+	public final static String PAGINATION = "pagination";
 	public final static String EMAIL_ID = "EMAIL_ID";
 	public final static String ALTERNATE_NO = "ALTERNATE_NO";
 	public final static String CONTACT_NO = "CONTACT_NO";
@@ -154,5 +155,13 @@ public interface CommonUtils {
 	}
 	public static boolean isEmptyString(String inputStr) {
 		return isEmptyString.test(inputStr);
+	}
+	/**
+	 * @param object
+	 * @return
+	 */
+	public static Object checkListNullOrEmpty(Object object) {
+		// TODO Auto-generated method stub
+		return object ==null?"":object;
 	}
 }

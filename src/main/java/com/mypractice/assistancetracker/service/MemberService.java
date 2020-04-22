@@ -34,6 +34,6 @@ public interface MemberService {
 	/**
 	 * @return
 	 */
-	Long getMemeberPageCount();
+	int getMemeberPageCount();
 
 }

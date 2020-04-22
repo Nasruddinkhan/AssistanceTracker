@@ -24,7 +24,7 @@ public interface MemberDao {
 	 * @param startPos
 	 * @return
 	 */
-	List<User> findAllMember(int startPos);
+	List<Object[]> findAllMember(int startPos);
 
 	/**
 	 * @return

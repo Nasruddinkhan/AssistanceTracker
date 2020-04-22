@@ -33,17 +33,23 @@ public class MemberDaoImpl implements MemberDao {
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 	}
 	@Override
-	public List<User> findAllMember(int startPos) {
+	public List<Object[]> findAllMember(int startPos) {
 		// TODO Auto-generated method stub
 		CriteriaBuilder criteriaBuilder =  sessionFactory.getCriteriaBuilder();
-		CriteriaQuery<User> criteriaQuery =  criteriaBuilder.createQuery(User.class);
+		CriteriaQuery<Object[]> criteriaQuery =  criteriaBuilder.createQuery(Object[].class);
 		Root<User> root= criteriaQuery.from(User.class);
-		criteriaQuery.select(root);
+		criteriaQuery.multiselect(root.get("username"), root.get("emailId"), root.get("firstName") , root.get("lastName"), root.get("cantactNo1"), root.get("contactNo"));
 		return sessionFactory.getCurrentSession().createQuery(criteriaQuery)
 				.setFirstResult(startPos)
 				.setMaxResults(CommonUtils.PAGE_SIZE)
 				.getResultList();
 	}
+	/*memberDTO.setMemberId(obj.getUsername());
+	memberDTO.setEmailId(obj.getEmailId());
+	memberDTO.setFirstName(obj.getFirstName());
+	memberDTO.setLastName(obj.getLastName());
+	memberDTO.setContactNo(obj.getContactNo());
+	memberDTO.setCantactNo1(obj.getCantactNo1());*/
 	@Override
 	public Long getMemeberPageCount() {
 		// TODO Auto-generated method stub

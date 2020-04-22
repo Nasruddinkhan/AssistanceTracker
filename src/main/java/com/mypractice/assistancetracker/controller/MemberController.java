@@ -10,17 +10,21 @@ import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRIES;
 import static com.mypractice.assistancetracker.util.CommonUtils.CSS;
 import static com.mypractice.assistancetracker.util.CommonUtils.MEMBER_PAGE;
 import static com.mypractice.assistancetracker.util.CommonUtils.MSG;
+import static com.mypractice.assistancetracker.util.CommonUtils.OPEN_CURLY_BRESH;
 import static com.mypractice.assistancetracker.util.CommonUtils.PROFESSIONS;
 import static com.mypractice.assistancetracker.util.CommonUtils.RIDIRECT;
 import static com.mypractice.assistancetracker.util.CommonUtils.SAVE;
 import static com.mypractice.assistancetracker.util.CommonUtils.SHOW_ADD_MEMMBER_PEGE;
 import static com.mypractice.assistancetracker.util.CommonUtils.SLASH;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ACTION;
+import static com.mypractice.assistancetracker.util.CommonUtils.URL_ID;
 import static com.mypractice.assistancetracker.util.CommonUtils.STATES;
 import static com.mypractice.assistancetracker.util.CommonUtils.CITIES;
+import static com.mypractice.assistancetracker.util.CommonUtils.CLOSE_CURLY_BRESH;
 import static com.mypractice.assistancetracker.util.CommonUtils.isEmptyString;
 import static com.mypractice.assistancetracker.util.CommonUtils.responseResult;
 import static com.mypractice.assistancetracker.util.ErrorConstant.SUCCESS;
+import static com.mypractice.assistancetracker.util.CommonUtils.PAGINATION;
 import javax.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,6 +33,7 @@ import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -46,6 +51,7 @@ import static com.mypractice.assistancetracker.util.CommonUtils.MEMBER;
 @Controller
 @RequestMapping(MEMBER)
 public class MemberController {
+
 	@Autowired
 	private MemberService memberService;
 	@Autowired
@@ -55,14 +61,22 @@ public class MemberController {
 
 	@GetMapping(SHOW_MEMBER_PAGE)
 	public String showMemberPage(ModelMap model) {
-		findAllMember(model, 0);
+		findAllMember(model, 1);
 		return MEMBER_PAGE;
 	}
 	private void findAllMember(ModelMap model, int pageNo){
-		model.addAttribute("pageCount", memberService.getMemeberPageCount());
+		model.addAttribute("pageCtn", memberService.getMemeberPageCount());
 		model.addAttribute("memberList", memberService.findAllMember(pageNo));
 	}
-
+	
+	
+	@GetMapping(SHOW_MEMBER_PAGE+SLASH+OPEN_CURLY_BRESH+URL_ID+CLOSE_CURLY_BRESH+SLASH+PAGINATION+URL_ACTION)
+	public String paginationWithMemberDetails(@PathVariable(URL_ID) Integer pageNo,  ModelMap model) {
+		System.out.println("showmemberpage");
+		findAllMember(model, pageNo);
+		return MEMBER_PAGE;
+	}
+	
 	@GetMapping(SLASH + SHOW_ADD_MEMMBER_PEGE)
 	public String showAddMemberPage(ModelMap model) {
 		model.addAttribute(SHOW_ADD_MEMMBER_PEGE, new MemberDTO());

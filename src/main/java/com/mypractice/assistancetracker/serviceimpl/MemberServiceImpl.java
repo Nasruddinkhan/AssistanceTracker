@@ -98,27 +98,40 @@ public class MemberServiceImpl implements MemberService {
 		user.setNickName(memberDTO.getNickName());
 		memberDao.saveMember(user);
 	}
-
 	@Override
 	public List<MemberDTO> findAllMember(int pageNo) {
 		// TODO Auto-generated method stub
+		List<MemberDTO> member= null;
 		int startPos=0;
 		startPos=(pageNo*CommonUtils.PAGE_SIZE)-CommonUtils.PAGE_SIZE;
-		List<User> user =  memberDao.findAllMember(startPos);
-		return null;
+		List<Object[]> user =  memberDao.findAllMember(startPos);
+		member = user.stream().map((Function<? super Object[], ? extends MemberDTO>)obj->{
+			MemberDTO   memberDTO= new MemberDTO();
+			memberDTO.setMemberId(obj[0].toString());
+			memberDTO.setEmailId(CommonUtils.checkListNullOrEmpty( obj[1]).toString());
+			memberDTO.setFirstName(CommonUtils.checkListNullOrEmpty(obj[2]).toString());
+			memberDTO.setLastName(CommonUtils.checkListNullOrEmpty(obj[3]).toString());
+			memberDTO.setContactNo(CommonUtils.checkListNullOrEmpty(obj[4]).toString());
+			memberDTO.setCantactNo1(CommonUtils.checkListNullOrEmpty(obj[5]).toString());
+			return memberDTO;
+		}).collect(Collectors.toList());
+		return member;
 	}
-
 	@Override
-	public Long getMemeberPageCount() {
+	public int getMemeberPageCount() {
 		// TODO Auto-generated method stub
 		Long count=0l;
+		int pageCoumypractice=0;
 		try {
 			count = memberDao.getMemeberPageCount();
-			System.out.println("MemberServiceImpl.getMemeberPageCount() count ["+count+"]");
+			pageCoumypractice = (int) (count/(long) CommonUtils.PAGE_SIZE);
+			if(count%CommonUtils.PAGE_SIZE!=0)
+				pageCoumypractice++;
 		}catch (Exception e) {
 			// TODO: handle exception
+			System.out.println("MemberServiceImpl.getMemeberPageCount()");
 		}
-		return count;
+		return pageCoumypractice;
 	}
 
 }
