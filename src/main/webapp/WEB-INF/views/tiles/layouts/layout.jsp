@@ -37,7 +37,8 @@
 	href="${pageContext.request.contextPath}/resources/dist/css/AdminLTE.min.css">
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/resources/bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-
+ <link
+	href="${pageContext.request.contextPath}/resources/css/jquery.fancybox.css"/>
 <!-- daterange picker -->
 <style type="text/css">
 .error {
@@ -136,6 +137,18 @@ absolute
 }
 .box-primary {
 	box-shadow: 0 2px 10px rgba(0, 0, 0, .2) !important;
+}
+.fancybox-inner{
+    height: 650px !important; 
+}
+.fancybox-skin{
+ height: 700px !important; 
+}
+@media ( min-width : 576px) {
+	.modal-dialog {
+		max-width: 70%;
+		margin: 30px auto;
+	}
 }
 </style>
 
@@ -378,6 +391,11 @@ absolute
 	<script
 		src="${pageContext.request.contextPath}/resources/dist/js/demo.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+	<script
+		src="${pageContext.request.contextPath}/resources/js/jquery.fancybox.js"
+		type="text/javascript"></script>
+<%--   <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
+   --%>
 	<script>
 		var myContextPath = "${pageContext.request.contextPath}"
 	</script>
@@ -421,6 +439,9 @@ absolute
 				let url = "/common/get/" + city + "/city.do";
 				ajaxGetCall(url, 'pincodeList')
 			});
+			 $(".memberiframe").fancybox({
+			      type: 'iframe'
+			 });
 		});
 	</script>
 </body>

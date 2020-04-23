@@ -54,6 +54,7 @@
 			return false;
 		return true;
 	}
+	
 	checkNAN = function(val) {
 		if (isNaN(val)) {
 			console.log("checkNAN");
