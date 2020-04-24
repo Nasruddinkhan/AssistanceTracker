@@ -55,101 +55,29 @@
 	position: relative;
 }
 
-@
--webkit-keyframes seconds { 0% {
+@-webkit-keyframes seconds { 
+0% {
 	opacity: 1;
 }
-
-100%
-{
-opacity
-
-
-:
-
- 
-
-0;
-left
-
-
-:
-
- 
-
--9999
-px
-
-
-;
-position
-
-
-:
-
- 
-
-absolute
-
-
-;
+100%{
+opacity:0;left -9999px;
+position:absolute;
 }
 }
-@
-keyframes seconds { 0% {
+@keyframes seconds {
+ 0% {
 	opacity: 1;
-}
-
-100%
-{
-opacity
-
-
-:
-
- 
-
-0;
-left
-
-
-:
-
- 
-
--9999
-px
-
-
-;
-position
-
-
-:
-
- 
-
-absolute
-
-
-;
-}
+	}
+100%{
+	opacity:0;
+	left:-9999px;
+	position:absolute;
+	}
 }
 .box-primary {
 	box-shadow: 0 2px 10px rgba(0, 0, 0, .2) !important;
 }
-.fancybox-inner{
-    height: 650px !important; 
-}
-.fancybox-skin{
- height: 700px !important; 
-}
-@media ( min-width : 576px) {
-	.modal-dialog {
-		max-width: 70%;
-		margin: 30px auto;
-	}
-}
+
 </style>
 
 </head>
@@ -391,9 +319,7 @@ absolute
 	<script
 		src="${pageContext.request.contextPath}/resources/dist/js/demo.js"></script>
 	<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
-	<script
-		src="${pageContext.request.contextPath}/resources/js/jquery.fancybox.js"
-		type="text/javascript"></script>
+	
 <%--   <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
    --%>
 	<script>

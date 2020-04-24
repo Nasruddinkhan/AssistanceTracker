@@ -7,7 +7,6 @@ package com.mypractice.assistancetracker.dao;
 
 import java.util.List;
 
-import com.mypractice.assistancetracker.dto.PaymentDTO;
 import com.mypractice.assistancetracker.model.PaymentMode;
 
 /**

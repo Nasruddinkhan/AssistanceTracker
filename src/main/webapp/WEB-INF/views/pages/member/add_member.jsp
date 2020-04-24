@@ -139,7 +139,21 @@
 			</div>
 			<div class="box-footer">
 				<div class="col-sm-12 col-sm-offset-5">
-					<button type="submit" class="btn btn-primary">Save</button>
+					<button type="submit" class="btn btn-primary">
+						<c:choose>
+							<c:when test="${not empty  add_member.memberId}">
+								<form:hidden class="form-control" path="memberId" />
+								<form:hidden class="form-control" path="addressId" />
+								<form:hidden class="form-control" path="isNew" value="fasle" />
+					Update
+					</c:when>
+							<c:otherwise>
+								<form:hidden class="form-control" path="isNew" value="true" />
+					Save
+					</c:otherwise>
+						</c:choose>
+
+					</button>
 				</div>
 			</div>
 		</form:form>

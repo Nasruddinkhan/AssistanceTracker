@@ -31,4 +31,15 @@ public interface MemberDao {
 	 */
 	Long getMemeberPageCount();
 
+	/**
+	 * @param userName
+	 * @return
+	 */
+	User editMember(String userName);
+
+	/**
+	 * @param user
+	 */
+	void deleteMember(User user);
+
 }

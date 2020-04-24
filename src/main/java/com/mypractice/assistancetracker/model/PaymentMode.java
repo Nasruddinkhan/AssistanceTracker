@@ -17,7 +17,6 @@ import static com.mypractice.assistancetracker.util.CommonUtils.SEQ;
 import static com.mypractice.assistancetracker.util.CommonUtils.SequenceId_Generator;
 import static com.mypractice.assistancetracker.util.CommonUtils.TEN_DIGIT;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ID;
-import static com.mypractice.assistancetracker.util.CommonUtils.VERSION;
 import static com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER;
 import static com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER;
 import static org.hibernate.id.enhanced.SequenceStyleGenerator.INCREMENT_PARAM;
@@ -30,7 +29,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
-import javax.persistence.Version;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;

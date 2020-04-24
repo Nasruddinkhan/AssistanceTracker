@@ -6,10 +6,6 @@
 package com.mypractice.assistancetracker.serviceimpl;
 
 
-import static com.mypractice.assistancetracker.util.CommonUtils.checkListNullOrEmpty;
-
-import java.lang.reflect.InvocationTargetException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;

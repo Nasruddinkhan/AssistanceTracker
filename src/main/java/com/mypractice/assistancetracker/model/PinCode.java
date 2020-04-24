@@ -5,14 +5,14 @@
  */
 package com.mypractice.assistancetracker.model;
 
-import static com.mypractice.assistancetracker.util.CommonUtils.CITY;
 import static com.mypractice.assistancetracker.util.CommonUtils.CITY_CODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_6;
 import static com.mypractice.assistancetracker.util.CommonUtils.MASTER;
 import static com.mypractice.assistancetracker.util.CommonUtils.PINCODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.PIN_CODE;
-import static com.mypractice.assistancetracker.util.CommonUtils.UNDER_LINE;
 import static com.mypractice.assistancetracker.util.CommonUtils.PIN__CODE;
+import static com.mypractice.assistancetracker.util.CommonUtils.UNDER_LINE;
+
 import java.util.List;
 
 import javax.persistence.CascadeType;

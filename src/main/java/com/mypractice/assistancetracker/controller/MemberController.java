@@ -10,10 +10,15 @@ import static com.mypractice.assistancetracker.util.CommonUtils.CLOSE_CURLY_BRES
 import static com.mypractice.assistancetracker.util.CommonUtils.COLON;
 import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRIES;
 import static com.mypractice.assistancetracker.util.CommonUtils.CSS;
+import static com.mypractice.assistancetracker.util.CommonUtils.CURRENT_PAGE;
+import static com.mypractice.assistancetracker.util.CommonUtils.DELETE;
+import static com.mypractice.assistancetracker.util.CommonUtils.EDIT;
 import static com.mypractice.assistancetracker.util.CommonUtils.MEMBER;
+import static com.mypractice.assistancetracker.util.CommonUtils.MEMBER_LIST;
 import static com.mypractice.assistancetracker.util.CommonUtils.MEMBER_PAGE;
 import static com.mypractice.assistancetracker.util.CommonUtils.MSG;
 import static com.mypractice.assistancetracker.util.CommonUtils.OPEN_CURLY_BRESH;
+import static com.mypractice.assistancetracker.util.CommonUtils.PAGE_COUNT;
 import static com.mypractice.assistancetracker.util.CommonUtils.PAGINATION;
 import static com.mypractice.assistancetracker.util.CommonUtils.PROFESSIONS;
 import static com.mypractice.assistancetracker.util.CommonUtils.RIDIRECT;
@@ -62,14 +67,13 @@ public class MemberController {
 	private CityService cityService;
 	@GetMapping(SHOW_MEMBER_PAGE)
 	public String showMemberPage(ModelMap model) {
-		System.out.println("MemberController.showMemberPage()");
 		findAllMember(model, 1);
 		return MEMBER_PAGE;
 	}
 	private void findAllMember(ModelMap model, int pageNo){
-		model.addAttribute("currentPage", pageNo);
-		model.addAttribute("pageCtn", memberService.getMemeberPageCount());
-		model.addAttribute("memberList", memberService.findAllMember(pageNo));
+		model.addAttribute(CURRENT_PAGE , pageNo);
+		model.addAttribute(PAGE_COUNT , memberService.getMemeberPageCount());
+		model.addAttribute(MEMBER_LIST, memberService.findAllMember(pageNo));
 	}
 	@GetMapping(SHOW_MEMBER_PAGE+SLASH+OPEN_CURLY_BRESH+URL_ID+CLOSE_CURLY_BRESH+SLASH+PAGINATION+URL_ACTION)
 	public String paginationWithMemberDetails(@PathVariable(URL_ID) Integer pageNo,  ModelMap model) {
@@ -86,13 +90,16 @@ public class MemberController {
 		model.addAttribute(COUNTRIES, stateService.getCountries());
 		model.addAttribute(PROFESSIONS, memberService.getProfession());
 	}
+	private void onLoadsValueChanges(ModelMap model, MemberDTO memberDTO) {
+		model.addAttribute(STATES, 	isEmptyString(memberDTO.getCountry())?null:stateService.getStates(memberDTO.getCountry()));
+		model.addAttribute(CITIES,  isEmptyString(memberDTO.getState())?null:cityService.getCities(memberDTO.getState()));
+	}
 	@PostMapping(SLASH + SAVE + SHOW_ADD_MEMMBER_PEGE)
 	public String saveMember(@ModelAttribute(SHOW_ADD_MEMMBER_PEGE) @Valid MemberDTO memberDTO, BindingResult result,
 			ModelMap model, final RedirectAttributes redirectAttributes) throws Exception {
 		if (result.hasErrors()) {
 			onLoads(model);
-			model.addAttribute(STATES, 	isEmptyString(memberDTO.getCountry())?null:stateService.getStates(memberDTO.getCountry()));
-			model.addAttribute(CITIES,  isEmptyString(memberDTO.getState())?null:cityService.getCities(memberDTO.getState()));
+			onLoadsValueChanges(model, memberDTO);
 			return SHOW_ADD_MEMMBER_PEGE;
 		}
 		redirectAttributes.addFlashAttribute(CSS, SUCCESS);
@@ -100,4 +107,18 @@ public class MemberController {
 		memberService.saveMember(memberDTO);
 		return RIDIRECT.concat(COLON).concat( SLASH+MEMBER_PAGE + SHOW_MEMBER_PAGE).concat(URL_ACTION);
 	}
+	@GetMapping(EDIT+SLASH+OPEN_CURLY_BRESH+URL_ID+CLOSE_CURLY_BRESH+SLASH+SHOW_ADD_MEMMBER_PEGE)
+	public String editMember(@PathVariable(URL_ID) String userName,ModelMap model) throws Exception {
+		onLoads(model);			
+		MemberDTO memberDTO = memberService.editMember(userName);
+		onLoadsValueChanges(model,memberDTO);
+		model.addAttribute(SHOW_ADD_MEMMBER_PEGE, memberDTO);
+		return SHOW_ADD_MEMMBER_PEGE;
+	}
+	@GetMapping(DELETE+SLASH+OPEN_CURLY_BRESH+URL_ID+CLOSE_CURLY_BRESH+SLASH+SHOW_ADD_MEMMBER_PEGE)
+	public String  deleteMember(@PathVariable(URL_ID) String memberId,ModelMap model) {
+		memberService.deleteMember(memberId);
+		return RIDIRECT.concat(COLON).concat( SLASH+MEMBER_PAGE + SHOW_MEMBER_PAGE).concat(URL_ACTION);
+	}
+	
 }

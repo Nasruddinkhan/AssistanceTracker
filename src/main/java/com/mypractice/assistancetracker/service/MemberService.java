@@ -36,4 +36,15 @@ public interface MemberService {
 	 */
 	int getMemeberPageCount();
 
+	/**
+	 * @param userName
+	 * @return
+	 */
+	MemberDTO editMember(String userName);
+
+	/**
+	 * @param memberId
+	 */
+	void deleteMember(String memberId);
+
 }

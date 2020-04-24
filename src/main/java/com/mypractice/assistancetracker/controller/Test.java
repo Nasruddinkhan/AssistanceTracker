@@ -5,13 +5,7 @@
  */
 package com.mypractice.assistancetracker.controller;
 
-import static com.mypractice.assistancetracker.util.CommonUtils.CLOSE_CURLY_BRESH;
-import static com.mypractice.assistancetracker.util.CommonUtils.OPEN_CURLY_BRESH;
-import static com.mypractice.assistancetracker.util.CommonUtils.PAGINATION;
-import static com.mypractice.assistancetracker.util.CommonUtils.SHOW_MEMBER_PAGE;
-import static com.mypractice.assistancetracker.util.CommonUtils.SLASH;
-import static com.mypractice.assistancetracker.util.CommonUtils.URL_ACTION;
-import static com.mypractice.assistancetracker.util.CommonUtils.URL_ID;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
  * @author nasru
@@ -27,7 +21,7 @@ public class Test {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(SHOW_MEMBER_PAGE+SLASH+OPEN_CURLY_BRESH+URL_ID+CLOSE_CURLY_BRESH+SLASH+PAGINATION+URL_ACTION);
+		System.out.println(new BCryptPasswordEncoder().encode("test"));
 		
 	}
 }

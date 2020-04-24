@@ -5,23 +5,18 @@
  */
 package com.mypractice.assistancetracker.daoimpl;
 
+import static com.mypractice.assistancetracker.util.CommonUtils.CITY;
+import static com.mypractice.assistancetracker.util.QueryConstant.FIND_ALL_PINCODE;
 import java.util.List;
-
-import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-
 import com.mypractice.assistancetracker.dao.PinCodeDao;
 import com.mypractice.assistancetracker.model.City;
 import com.mypractice.assistancetracker.model.PinCode;
-
-import static com.mypractice.assistancetracker.util.CommonUtils.CITY;
-import static com.mypractice.assistancetracker.util.QueryConstant.FIND_ALL_PINCODE;
 /**
  * @author nasru
  *

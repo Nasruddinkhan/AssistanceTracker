@@ -8,8 +8,6 @@ package com.mypractice.assistancetracker.model;
 import static com.mypractice.assistancetracker.util.CommonUtils.ADDRESS;
 import static com.mypractice.assistancetracker.util.CommonUtils.CITY_CODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY_CODE;
-import static com.mypractice.assistancetracker.util.CommonUtils.INVALID_FIELD_SIZE;
-import static com.mypractice.assistancetracker.util.CommonUtils.LEN_3;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_50;
 import static com.mypractice.assistancetracker.util.CommonUtils.MASTER;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_1;
@@ -28,7 +26,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 import com.mypractice.assistancetracker.util.CommonUtils;
 

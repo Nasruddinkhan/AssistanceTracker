@@ -5,6 +5,11 @@
  */
 package com.mypractice.assistancetracker.daoimpl;
 
+import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY;
+import static com.mypractice.assistancetracker.util.CommonUtils.STATE_CODE;
+import static com.mypractice.assistancetracker.util.QueryConstant.DELETE_STATE_REC;
+import static com.mypractice.assistancetracker.util.QueryConstant.FIND_ALL_STATE;
+
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -15,14 +20,10 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
 import com.mypractice.assistancetracker.dao.StateDao;
 import com.mypractice.assistancetracker.model.Country;
-import com.mypractice.assistancetracker.model.PaymentMode;
 import com.mypractice.assistancetracker.model.State;
-import static com.mypractice.assistancetracker.util.CommonUtils.STATE_CODE;
-import static com.mypractice.assistancetracker.util.QueryConstant.DELETE_STATE_REC;
-import static com.mypractice.assistancetracker.util.QueryConstant.FIND_ALL_STATE;
-import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY;
 
 /**
  * @author nasru

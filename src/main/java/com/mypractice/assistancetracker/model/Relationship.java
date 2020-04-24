@@ -11,7 +11,7 @@ import static com.mypractice.assistancetracker.util.CommonUtils.LEN_1;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_100;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_50;
 import static com.mypractice.assistancetracker.util.CommonUtils.NAME;
-import static com.mypractice.assistancetracker.util.CommonUtils.NEEDY_REFERED;
+import static com.mypractice.assistancetracker.util.CommonUtils.RELATIONSHIP;
 import static com.mypractice.assistancetracker.util.CommonUtils.RELATIONSHIP_MODE_PREFIX;
 import static com.mypractice.assistancetracker.util.CommonUtils.SEQ;
 import static com.mypractice.assistancetracker.util.CommonUtils.SequenceId_Generator;
@@ -20,7 +20,7 @@ import static com.mypractice.assistancetracker.util.CommonUtils.URL_ID;
 import static com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER;
 import static com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER;
 import static org.hibernate.id.enhanced.SequenceStyleGenerator.INCREMENT_PARAM;
-import static com.mypractice.assistancetracker.util.CommonUtils.RELATIONSHIP;
+
 import java.time.LocalDateTime;
 import java.util.Set;
 

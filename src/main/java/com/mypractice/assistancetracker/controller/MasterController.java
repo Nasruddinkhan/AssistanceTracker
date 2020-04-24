@@ -10,8 +10,6 @@ import static com.mypractice.assistancetracker.util.CommonUtils.COLON;
 import static com.mypractice.assistancetracker.util.CommonUtils.DROPDOWN_BEAN;
 import static com.mypractice.assistancetracker.util.CommonUtils.MASTER;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST;
-import static com.mypractice.assistancetracker.util.CommonUtils.PINCODE;
-import static com.mypractice.assistancetracker.util.CommonUtils.PINCODE_URL;
 import static com.mypractice.assistancetracker.util.CommonUtils.RIDIRECT;
 import static com.mypractice.assistancetracker.util.CommonUtils.URL_ACTION;
 

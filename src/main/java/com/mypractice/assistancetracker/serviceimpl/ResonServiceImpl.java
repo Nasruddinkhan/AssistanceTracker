@@ -6,7 +6,6 @@
 package com.mypractice.assistancetracker.serviceimpl;
 
 
-import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
@@ -17,9 +16,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.mypractice.assistancetracker.dao.ReasonDao;
-import com.mypractice.assistancetracker.dto.ProfessionDTO;
 import com.mypractice.assistancetracker.dto.ReasonDto;
-import com.mypractice.assistancetracker.model.Profession;
 import com.mypractice.assistancetracker.model.Reason;
 import com.mypractice.assistancetracker.service.ReasonService;
 

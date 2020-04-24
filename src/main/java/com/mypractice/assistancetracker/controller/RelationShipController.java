@@ -12,7 +12,6 @@ import static com.mypractice.assistancetracker.util.CommonUtils.EDIT;
 import static com.mypractice.assistancetracker.util.CommonUtils.MSG;
 import static com.mypractice.assistancetracker.util.CommonUtils.MST;
 import static com.mypractice.assistancetracker.util.CommonUtils.OPEN_CURLY_BRESH;
-import static com.mypractice.assistancetracker.util.CommonUtils.PAYMENT_MODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.RELATIONSHIP;
 import static com.mypractice.assistancetracker.util.CommonUtils.RELATIONSHIPS;
 import static com.mypractice.assistancetracker.util.CommonUtils.RELATIONSHIP_URL;
@@ -37,7 +36,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.mypractice.assistancetracker.dto.PaymentDTO;
 import com.mypractice.assistancetracker.dto.RelationshipDto;
 import com.mypractice.assistancetracker.service.RelationshipService;
 

@@ -7,7 +7,6 @@ package com.mypractice.assistancetracker.service;
 
 import java.util.List;
 
-import com.mypractice.assistancetracker.dto.ProfessionDTO;
 import com.mypractice.assistancetracker.dto.ReasonDto;
 
 /**

@@ -78,7 +78,20 @@ public class MemberDTO {
 	private LocalDateTime createDateTime;
 	private LocalDateTime updateDateTime;
 	public String isNew;
+	private Integer addressId;
 	
+	/**
+	 * @return the addressId
+	 */
+	public Integer getAddressId() {
+		return addressId;
+	}
+	/**
+	 * @param addressId the addressId to set
+	 */
+	public void setAddressId(Integer addressId) {
+		this.addressId = addressId;
+	}
 	/**
 	 * @return the createDateTime
 	 */

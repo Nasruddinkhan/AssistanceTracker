@@ -13,7 +13,6 @@ import static com.mypractice.assistancetracker.util.CommonUtils.LEN_2;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_3;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_50;
 import static com.mypractice.assistancetracker.util.CommonUtils.MASTER;
-import static com.mypractice.assistancetracker.util.CommonUtils.STATE;
 import static com.mypractice.assistancetracker.util.CommonUtils.STATE_CODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.UNDER_LINE;
 

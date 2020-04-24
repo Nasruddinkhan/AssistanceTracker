@@ -5,6 +5,7 @@
  */
 package com.mypractice.assistancetracker.serviceimpl;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.function.Function;
@@ -27,11 +28,13 @@ import com.mypractice.assistancetracker.dto.MemberDTO;
 import com.mypractice.assistancetracker.dto.ProfessionDTO;
 import com.mypractice.assistancetracker.model.Address;
 import com.mypractice.assistancetracker.model.Authorities;
+import com.mypractice.assistancetracker.model.Profession;
 import com.mypractice.assistancetracker.model.User;
 import com.mypractice.assistancetracker.service.MemberService;
 import com.mypractice.assistancetracker.service.ProfessionService;
-import com.mypractice.assistancetracker.util.CommonUtils;
-
+import static com.mypractice.assistancetracker.util.CommonUtils.PAGE_SIZE;
+import static com.mypractice.assistancetracker.util.CommonUtils.checkListNullOrEmpty;
+import static com.mypractice.assistancetracker.util.CommonUtils.isEmptyObject;
 /**
  * @author nasru
  *
@@ -68,11 +71,13 @@ public class MemberServiceImpl implements MemberService {
 	@Override
 	public void saveMember(MemberDTO memberDTO) {
 		// TODO Auto-generated method stub
+		System.out.println(memberDTO.getMemberId()+memberDTO.getAddressId());
 		User user = new User();
 		user.setUsername(memberDTO.getMemberId());
 		user.setEmailId(memberDTO.getEmailId());
 		user.setEnabled(true);
 		Address address = new Address();
+		address.setAddressId(memberDTO.getAddressId());
 		address.setCountry(	countryDao.findByCountry(memberDTO.getCountry()));
 		address.setCity(cityDao.findCity(memberDTO.getCity()));
 		address.setState(stateDao.findState(memberDTO.getState()));
@@ -83,11 +88,11 @@ public class MemberServiceImpl implements MemberService {
 		user.setAddress(address);
 		user.setProfession(profesionDAO.editProfession(Integer.valueOf(memberDTO.getProfession())));
 		Authorities authorities2 = authoriseDao.findRole("MEMBER_ROLE");
-		Set<Authorities> authorities= user.getAuthorities();
-		if(authorities2 == null) {
+		Set<Authorities> authorities= new HashSet<>();
+		if(isEmptyObject(authorities2)) { 
 			authorities2 = new Authorities();
 			authorities2.setAuthority("MEMBER_ROLE");
-		}
+		} 
 		authorities.add(authorities2);
 		user.setAuthorities(authorities);
 		user.setPassword( new BCryptPasswordEncoder().encode("Nasru@1992"));
@@ -96,6 +101,7 @@ public class MemberServiceImpl implements MemberService {
 		user.setContactNo(memberDTO.getContactNo());
 		user.setCantactNo1(memberDTO.getCantactNo1());
 		user.setNickName(memberDTO.getNickName());
+		user.setActive(true);
 		memberDao.saveMember(user);
 	}
 	@Override
@@ -103,16 +109,16 @@ public class MemberServiceImpl implements MemberService {
 		// TODO Auto-generated method stub
 		List<MemberDTO> member= null;
 		int startPos=0;
-		startPos=(pageNo*CommonUtils.PAGE_SIZE)-CommonUtils.PAGE_SIZE;
+		startPos=(pageNo*PAGE_SIZE)-PAGE_SIZE;
 		List<Object[]> user =  memberDao.findAllMember(startPos);
 		member = user.stream().map((Function<? super Object[], ? extends MemberDTO>)obj->{
 			MemberDTO   memberDTO= new MemberDTO();
 			memberDTO.setMemberId(obj[0].toString());
-			memberDTO.setEmailId(CommonUtils.checkListNullOrEmpty( obj[1]).toString());
-			memberDTO.setFirstName(CommonUtils.checkListNullOrEmpty(obj[2]).toString());
-			memberDTO.setLastName(CommonUtils.checkListNullOrEmpty(obj[3]).toString());
-			memberDTO.setContactNo(CommonUtils.checkListNullOrEmpty(obj[4]).toString());
-			memberDTO.setCantactNo1(CommonUtils.checkListNullOrEmpty(obj[5]).toString());
+			memberDTO.setEmailId(checkListNullOrEmpty( obj[1]).toString());
+			memberDTO.setFirstName(checkListNullOrEmpty(obj[2]).toString());
+			memberDTO.setLastName(checkListNullOrEmpty(obj[3]).toString());
+			memberDTO.setContactNo(checkListNullOrEmpty(obj[4]).toString());
+			memberDTO.setCantactNo1(checkListNullOrEmpty(obj[5]).toString());
 			return memberDTO;
 		}).collect(Collectors.toList());
 		return member;
@@ -124,14 +130,53 @@ public class MemberServiceImpl implements MemberService {
 		int pageCoumypractice=0;
 		try {
 			count = memberDao.getMemeberPageCount();
-			pageCoumypractice = (int) (count/(long) CommonUtils.PAGE_SIZE);
-			if(count%CommonUtils.PAGE_SIZE!=0)
+			pageCoumypractice = (int) (count/(long) PAGE_SIZE);
+			if(count%PAGE_SIZE!=0)
 				pageCoumypractice++;
 		}catch (Exception e) {
 			// TODO: handle exception
 			System.out.println("MemberServiceImpl.getMemeberPageCount()");
 		}
 		return pageCoumypractice;
+	}
+
+	@Override
+	public MemberDTO editMember(String userName) {
+		// TODO Auto-generated method stub
+		MemberDTO dto = new MemberDTO();
+		User user = memberDao.editMember(userName);
+		dto.setMemberId(user.getUsername());
+		dto.setFirstName(user.getFirstName());
+		dto.setLastName(user.getLastName());
+		dto.setContactNo(user.getContactNo());
+		dto.setCantactNo1(user.getCantactNo1());
+		dto.setEmailId(user.getEmailId());
+		Address address = user.getAddress();
+		if(!isEmptyObject(address)) {
+			dto.setAddressId(address.getAddressId());
+			dto.setAddress1(address.getAddress1());
+			dto.setAddress2(address.getAddress2());
+			dto.setCountry(address.getCountry().getCountryCode());
+			dto.setCity(address.getCity().getCityCode());
+			dto.setPinCode(address.getPinCode().getPinCode());
+			dto.setState(address.getState().getStateCode());
+			dto.setStreet(address.getStreet());
+		}
+		Profession profession =  user.getProfession();
+		if(!isEmptyObject(profession)) 
+			dto.setProfession(profession.getProfessionId().toString());
+		dto.setUpdateDateTime(user.getUpdateDateTime());
+		dto.setCreateDateTime(user.getCreateDateTime());
+		dto.setNickName(user.getNickName());
+		return dto;
+	}
+
+	@Override
+	public void deleteMember(String memberId) {
+		// TODO Auto-generated method stub
+	User user =	memberDao.editMember(memberId);
+	user.setActive(false);
+	memberDao.deleteMember(user);
 	}
 
 }

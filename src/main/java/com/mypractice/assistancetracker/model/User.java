@@ -1,19 +1,33 @@
 package com.mypractice.assistancetracker.model;
 
 import static com.mypractice.assistancetracker.util.CommonUtils.ADD_DATE;
+import static com.mypractice.assistancetracker.util.CommonUtils.ALTERNATE_NO;
+import static com.mypractice.assistancetracker.util.CommonUtils.AUTHORITY_ID;
+import static com.mypractice.assistancetracker.util.CommonUtils.CONTACT_NO;
 import static com.mypractice.assistancetracker.util.CommonUtils.EDIT_DATE;
+import static com.mypractice.assistancetracker.util.CommonUtils.EMAIL_ID;
+import static com.mypractice.assistancetracker.util.CommonUtils.ENABLED;
 import static com.mypractice.assistancetracker.util.CommonUtils.FIFTEEN_DIGIT;
+import static com.mypractice.assistancetracker.util.CommonUtils.FIRST_NAME;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_1;
+import static com.mypractice.assistancetracker.util.CommonUtils.LEN_10;
+import static com.mypractice.assistancetracker.util.CommonUtils.LEN_50;
 import static com.mypractice.assistancetracker.util.CommonUtils.MEMBER_MODE_PREFIX;
+import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_100;
+import static com.mypractice.assistancetracker.util.CommonUtils.MST_LEN_20;
+import static com.mypractice.assistancetracker.util.CommonUtils.NICK_NAME;
+import static com.mypractice.assistancetracker.util.CommonUtils.PASSWORD;
 import static com.mypractice.assistancetracker.util.CommonUtils.PROFESSION_ID;
 import static com.mypractice.assistancetracker.util.CommonUtils.SEQ;
 import static com.mypractice.assistancetracker.util.CommonUtils.SequenceId_Generator;
+import static com.mypractice.assistancetracker.util.CommonUtils.USERNAME;
+import static com.mypractice.assistancetracker.util.CommonUtils.USERS;
+import static com.mypractice.assistancetracker.util.CommonUtils.USER_ROLE;
 import static com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGenerator.NUMBER_FORMAT_PARAMETER;
 import static com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGenerator.VALUE_PREFIX_PARAMETER;
 import static org.hibernate.id.enhanced.SequenceStyleGenerator.INCREMENT_PARAM;
 
 import java.time.LocalDateTime;
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -29,7 +43,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Version;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
@@ -37,12 +50,11 @@ import org.hibernate.annotations.Parameter;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.mypractice.assistancetracker.util.CommonUtils;
-
 @Entity
-@Table(name = "USERS")
+@Table(name = USERS)
 public class User {
 	@Id
-	@Column(name = "USERNAME")
+	@Column(name =USERNAME, length = LEN_50)
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = MEMBER_MODE_PREFIX + SEQ)
 	@GenericGenerator(name = MEMBER_MODE_PREFIX + SEQ, strategy = SequenceId_Generator, parameters = {
 			@Parameter(name = MEMBER_MODE_PREFIX + SEQ, value = MEMBER_MODE_PREFIX + SEQ),
@@ -50,50 +62,63 @@ public class User {
 			@Parameter(name = VALUE_PREFIX_PARAMETER, value = MEMBER_MODE_PREFIX),
 			@Parameter(name = NUMBER_FORMAT_PARAMETER, value = FIFTEEN_DIGIT) })
 	private String username;
-	@Column(name = "PASSWORD", nullable = false)
+	@Column(name = PASSWORD, nullable = false)
 	private String password;
 
-	@Column(name = "ENABLED", nullable = false)
+	@Column(name = ENABLED, nullable = false)
 	private boolean enabled;
 
-
-	@ManyToMany(cascade = { CascadeType.ALL })
+	@ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
-        name = "USER_ROLE", 
-        joinColumns = { @JoinColumn(name = "USERNAME") }, 
-        inverseJoinColumns = { @JoinColumn(name = "AUTHORITY_ID") }
+        name = USER_ROLE, 
+        joinColumns = { @JoinColumn(name =USERNAME) }, 
+        inverseJoinColumns = { @JoinColumn(name = AUTHORITY_ID) }
     )
-    Set<Authorities> authorities = new HashSet<>();
+    Set<Authorities> authorities = null;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn (name = CommonUtils.ADDRESS_ID)
-	private Address address;
-
+	private Address address ;
+	
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = PROFESSION_ID)
 	private Profession profession;
-	@Column(name = CommonUtils.FIRST_NAME, length = CommonUtils.LEN_50)
+	@Column(name = FIRST_NAME, length = LEN_50) 
 	private String firstName; 
-	@Column(name = CommonUtils.LAST_NAME,length =CommonUtils.MST_LEN_20  )
+	@Column(name = CommonUtils.LAST_NAME,length =MST_LEN_20  ) 
 	private String lastName;  
-	@Column(name =CommonUtils.NICK_NAME, length =CommonUtils.MST_LEN_20  )
+	@Column(name =NICK_NAME, length =MST_LEN_20  )
 	private String nickName;  	
-	@Column(name = CommonUtils.CONTACT_NO, length = CommonUtils.LEN_10)
+	@Column(name = CONTACT_NO, length =LEN_10)
 	private String contactNo; 
-	@Column(name =CommonUtils.ALTERNATE_NO,  length = CommonUtils.LEN_10 )
+	@Column(name =ALTERNATE_NO,  length =LEN_10 )
 	private String cantactNo1; 
-	@Column(name = CommonUtils.EMAIL_ID, length = CommonUtils.MST_LEN_100)
+	@Column(name = EMAIL_ID, length = MST_LEN_100)
 	private String emailId;
-	@Version
-	@Column(name = CommonUtils.VERSION)
-	private int version;
+	
 	@Column(name = ADD_DATE)
 	@CreationTimestamp
 	private LocalDateTime createDateTime;
 	@Column(name = EDIT_DATE)
 	@UpdateTimestamp
 	private LocalDateTime updateDateTime;
+	@Column(name = CommonUtils.IS_ACTIVE, columnDefinition = "boolean default true", nullable = false)
+	private boolean isActive;
 	
+	/**
+	 * @return the isActive
+	 */
+	public boolean isActive() {
+		return isActive;
+	}
+
+	/**
+	 * @param isActive the isActive to set
+	 */
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+
 	/**
 	 * @return the address
 	 */
@@ -196,12 +221,7 @@ public class User {
 		return emailId;
 	}
 
-	/**
-	 * @return the version
-	 */
-	public int getVersion() {
-		return version;
-	}
+	
 
 	/**
 	 * @return the createDateTime
@@ -259,12 +279,7 @@ public class User {
 		this.emailId = emailId;
 	}
 
-	/**
-	 * @param version the version to set
-	 */
-	public void setVersion(int version) {
-		this.version = version;
-	}
+	
 
 	/**
 	 * @param createDateTime the createDateTime to set
@@ -279,4 +294,5 @@ public class User {
 	public void setUpdateDateTime(LocalDateTime updateDateTime) {
 		this.updateDateTime = updateDateTime;
 	}
+	
 }

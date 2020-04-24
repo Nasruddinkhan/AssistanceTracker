@@ -39,6 +39,7 @@ public class UniqueValidator implements ConstraintValidator<Unique, Object> {
 	@Override
 	public boolean isValid(Object value, ConstraintValidatorContext context) {
 		// TODO Auto-generated method stub
+		System.out.println(fieldName+ " "+service);
 		// return !this.service.fieldValueExists(value, this.fieldName);
 		return true;
 	}

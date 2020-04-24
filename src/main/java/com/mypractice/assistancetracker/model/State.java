@@ -5,7 +5,6 @@
  */
 package com.mypractice.assistancetracker.model;
 import static com.mypractice.assistancetracker.util.CommonUtils.ALPHA_2_CODE;
-import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY;
 import static com.mypractice.assistancetracker.util.CommonUtils.COUNTRY_CODE;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_3;
 import static com.mypractice.assistancetracker.util.CommonUtils.LEN_50;
