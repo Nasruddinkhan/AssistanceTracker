@@ -20,16 +20,11 @@ public interface MemberDao {
 	 */
 	void saveMember(User user);
 
-	/**
-	 * @param startPos
-	 * @return
-	 */
-	List<Object[]> findAllMember(int startPos);
 
 	/**
 	 * @return
 	 */
-	Long getMemeberPageCount();
+	Long getMemeberPageCount(User user);
 
 	/**
 	 * @param userName
@@ -41,5 +36,12 @@ public interface MemberDao {
 	 * @param user
 	 */
 	void deleteMember(User user);
+
+	/**
+	 * @param startPos
+	 * @param logUser
+	 * @return
+	 */
+	List<Object[]> findAllMember(int startPos, User logUser);
 
 }

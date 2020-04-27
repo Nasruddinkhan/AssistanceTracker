@@ -69,7 +69,7 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public void saveMember(MemberDTO memberDTO) {
+	public void saveMember(MemberDTO memberDTO,  String loginUser) {
 		// TODO Auto-generated method stub
 		System.out.println(memberDTO.getMemberId()+memberDTO.getAddressId());
 		User user = new User();
@@ -102,15 +102,18 @@ public class MemberServiceImpl implements MemberService {
 		user.setCantactNo1(memberDTO.getCantactNo1());
 		user.setNickName(memberDTO.getNickName());
 		user.setActive(true);
+		User loggedUser= memberDao.editMember(loginUser);
+		user.setUsers(loggedUser);
 		memberDao.saveMember(user);
 	}
 	@Override
-	public List<MemberDTO> findAllMember(int pageNo) {
+	public List<MemberDTO> findAllMember(int pageNo, String logginUser) {
 		// TODO Auto-generated method stub
+		User logUser= memberDao.editMember(logginUser);
 		List<MemberDTO> member= null;
 		int startPos=0;
 		startPos=(pageNo*PAGE_SIZE)-PAGE_SIZE;
-		List<Object[]> user =  memberDao.findAllMember(startPos);
+		List<Object[]> user =  memberDao.findAllMember(startPos, logUser);
 		member = user.stream().map((Function<? super Object[], ? extends MemberDTO>)obj->{
 			MemberDTO   memberDTO= new MemberDTO();
 			memberDTO.setMemberId(obj[0].toString());
@@ -124,12 +127,13 @@ public class MemberServiceImpl implements MemberService {
 		return member;
 	}
 	@Override
-	public int getMemeberPageCount() {
+	public int getMemeberPageCount(String logginUser) {
 		// TODO Auto-generated method stub
+		User logUser= memberDao.editMember(logginUser);
 		Long count=0l;
 		int pageCoumypractice=0;
 		try {
-			count = memberDao.getMemeberPageCount();
+			count = memberDao.getMemeberPageCount(logUser);
 			pageCoumypractice = (int) (count/(long) PAGE_SIZE);
 			if(count%PAGE_SIZE!=0)
 				pageCoumypractice++;

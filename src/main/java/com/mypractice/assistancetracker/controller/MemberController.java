@@ -33,6 +33,8 @@ import static com.mypractice.assistancetracker.util.CommonUtils.isEmptyString;
 import static com.mypractice.assistancetracker.util.CommonUtils.responseResult;
 import static com.mypractice.assistancetracker.util.ErrorConstant.SUCCESS;
 
+import java.security.Principal;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -66,18 +68,19 @@ public class MemberController {
 	@Autowired
 	private CityService cityService;
 	@GetMapping(SHOW_MEMBER_PAGE)
-	public String showMemberPage(ModelMap model) {
-		findAllMember(model, 1);
+	public String showMemberPage(ModelMap model,  Principal principal) {
+		findAllMember(model, 1, principal);
 		return MEMBER_PAGE;
 	}
-	private void findAllMember(ModelMap model, int pageNo){
+	private void findAllMember(ModelMap model, int pageNo, Principal principal){
+		String logginUser = principal.getName();
 		model.addAttribute(CURRENT_PAGE , pageNo);
-		model.addAttribute(PAGE_COUNT , memberService.getMemeberPageCount());
-		model.addAttribute(MEMBER_LIST, memberService.findAllMember(pageNo));
+		model.addAttribute(PAGE_COUNT , memberService.getMemeberPageCount(logginUser));
+		model.addAttribute(MEMBER_LIST, memberService.findAllMember(pageNo, logginUser));
 	}
 	@GetMapping(SHOW_MEMBER_PAGE+SLASH+OPEN_CURLY_BRESH+URL_ID+CLOSE_CURLY_BRESH+SLASH+PAGINATION+URL_ACTION)
-	public String paginationWithMemberDetails(@PathVariable(URL_ID) Integer pageNo,  ModelMap model) {
-		findAllMember(model, pageNo);
+	public String paginationWithMemberDetails(@PathVariable(URL_ID) Integer pageNo,  ModelMap model, Principal principal) {
+		findAllMember(model, pageNo, principal);
 		return MEMBER_PAGE;
 	}
 	@GetMapping(SLASH + SHOW_ADD_MEMMBER_PEGE)
@@ -96,7 +99,10 @@ public class MemberController {
 	}
 	@PostMapping(SLASH + SAVE + SHOW_ADD_MEMMBER_PEGE)
 	public String saveMember(@ModelAttribute(SHOW_ADD_MEMMBER_PEGE) @Valid MemberDTO memberDTO, BindingResult result,
-			ModelMap model, final RedirectAttributes redirectAttributes) throws Exception {
+			ModelMap model, final RedirectAttributes redirectAttributes,
+			 Principal principal) throws Exception {
+		String loginUser = principal.getName();
+		System.out.println(loginUser);
 		if (result.hasErrors()) {
 			onLoads(model);
 			onLoadsValueChanges(model, memberDTO);
@@ -104,7 +110,7 @@ public class MemberController {
 		}
 		redirectAttributes.addFlashAttribute(CSS, SUCCESS);
 		redirectAttributes.addFlashAttribute(MSG, responseResult(memberDTO.getIsNew()));
-		memberService.saveMember(memberDTO);
+		memberService.saveMember(memberDTO, loginUser);
 		return RIDIRECT.concat(COLON).concat( SLASH+MEMBER_PAGE + SHOW_MEMBER_PAGE).concat(URL_ACTION);
 	}
 	@GetMapping(EDIT+SLASH+OPEN_CURLY_BRESH+URL_ID+CLOSE_CURLY_BRESH+SLASH+SHOW_ADD_MEMMBER_PEGE)

@@ -35,13 +35,13 @@ public class MemberDaoImpl implements MemberDao {
 		sessionFactory.getCurrentSession().saveOrUpdate(user);
 	}
 	@Override
-	public List<Object[]> findAllMember(int startPos) {
+	public List<Object[]> findAllMember(int startPos, User user) {
 		// TODO Auto-generated method stub
 		CriteriaBuilder criteriaBuilder =  sessionFactory.getCriteriaBuilder();
 		CriteriaQuery<Object[]> criteriaQuery =  criteriaBuilder.createQuery(Object[].class);
 		Root<User> root= criteriaQuery.from(User.class);
 		criteriaQuery.multiselect(root.get(USER_NAME), root.get(EMAIL_ID_LC), root.get(FIRSTNAME_LC) , root.get(LASTNAME_LC), root.get(CONTACT_NO1_LC), 
-				root.get(CONTACT_NO_LC)).where(criteriaBuilder.equal(root.get("isActive"),  true));
+				root.get(CONTACT_NO_LC)).where(criteriaBuilder.equal(root.get("isActive"),  true), criteriaBuilder.equal(root.get("users"), user));
 		return sessionFactory.getCurrentSession().createQuery(criteriaQuery)
 				.setFirstResult(startPos)
 				.setMaxResults(PAGE_SIZE)
@@ -49,12 +49,12 @@ public class MemberDaoImpl implements MemberDao {
 	}
 	
 	@Override
-	public Long getMemeberPageCount() {
+	public Long getMemeberPageCount(User user) {
 		// TODO Auto-generated method stub
 		CriteriaBuilder criteriaBuilder =  sessionFactory.getCriteriaBuilder();
 		CriteriaQuery<Long> criteriaQuery =  criteriaBuilder.createQuery(Long.class);
 		Root<User> root=  criteriaQuery.from(User.class);
-		criteriaQuery.multiselect(criteriaBuilder.count(root.get(USER_NAME)));
+		criteriaQuery.multiselect(criteriaBuilder.count(root.get(USER_NAME))).where(criteriaBuilder.equal(root.get("users"), user));
 		return sessionFactory.getCurrentSession().createQuery(criteriaQuery).getSingleResult();
 	}
 	@Override

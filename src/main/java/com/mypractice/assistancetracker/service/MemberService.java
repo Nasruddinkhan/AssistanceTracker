@@ -22,19 +22,22 @@ public interface MemberService {
 
 	/**
 	 * @param memberDTO
+	 * @param loginUser 
 	 */
-	void saveMember(MemberDTO memberDTO);
+	void saveMember(MemberDTO memberDTO, String loginUser);
 
 	/**
 	 * @param pageNo
+	 * @param logginUser 
 	 * @return
 	 */
-	List<MemberDTO> findAllMember(int pageNo);
+	List<MemberDTO> findAllMember(int pageNo, String logginUser);
 
 	/**
+	 * @param logginUser 
 	 * @return
 	 */
-	int getMemeberPageCount();
+	int getMemeberPageCount(String logginUser);
 
 	/**
 	 * @param userName

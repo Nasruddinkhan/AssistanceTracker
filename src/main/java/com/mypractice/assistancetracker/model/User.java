@@ -28,6 +28,7 @@ import static com.mypractice.assistancetracker.util.StringPrefixedSequenceIdGene
 import static org.hibernate.id.enhanced.SequenceStyleGenerator.INCREMENT_PARAM;
 
 import java.time.LocalDateTime;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -41,6 +42,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -105,6 +107,42 @@ public class User {
 	@Column(name = CommonUtils.IS_ACTIVE, columnDefinition = "boolean default true", nullable = false)
 	private boolean isActive;
 	
+	@ManyToOne(cascade={CascadeType.ALL})
+	@JoinColumn(name="MANAGER_ID")
+	private User users;
+
+	@OneToMany(mappedBy="users")
+	private Set<User> subordinates = new HashSet<User>();
+	
+	
+	/**
+	 * @return the users
+	 */
+	public User getUsers() {
+		return users;
+	}
+
+	/**
+	 * @return the subordinates
+	 */
+	public Set<User> getSubordinates() {
+		return subordinates;
+	}
+
+	/**
+	 * @param users the users to set
+	 */
+	public void setUsers(User users) {
+		this.users = users;
+	}
+
+	/**
+	 * @param subordinates the subordinates to set
+	 */
+	public void setSubordinates(Set<User> subordinates) {
+		this.subordinates = subordinates;
+	}
+
 	/**
 	 * @return the isActive
 	 */
