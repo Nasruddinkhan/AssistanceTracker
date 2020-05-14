@@ -250,7 +250,10 @@
                   <a href="#" class="btn btn-default btn-flat">Profile</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">Sign out</a>
+                <form action="/AssistanceTracker/logout" method="post">
+                <!--   <a href="#" class="btn btn-default btn-flat">Sign out</a> -->
+                  <input value="Sign out" class="btn btn-default btn-flat" type="submit">
+                  </form>
                 </div>
               </li>
             </ul>

@@ -144,6 +144,7 @@
 							<c:when test="${not empty  add_member.memberId}">
 								<form:hidden class="form-control" path="memberId" />
 								<form:hidden class="form-control" path="addressId" />
+								<form:hidden class="form-control" path="createDateTime" />
 								<form:hidden class="form-control" path="isNew" value="fasle" />
 					Update
 					</c:when>

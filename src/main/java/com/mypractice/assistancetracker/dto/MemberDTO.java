@@ -74,11 +74,63 @@ public class MemberDTO {
 	@Size(max =LEN_200 , min =LEN_10 , message = INVALID_FIELD_SIZE)
 	@NotBlank(message = FIELD_INVALID)
 	private String address2;
-	private int counter;
+	private String professionName;
+	private String countryName;
+	private String stateName;
+	private String cityName;
 	private LocalDateTime createDateTime;
 	private LocalDateTime updateDateTime;
 	public String isNew;
 	private Integer addressId;
+	
+	/**
+	 * @return the professionName
+	 */
+	public String getProfessionName() {
+		return professionName;
+	}
+	/**
+	 * @return the countryName
+	 */
+	public String getCountryName() {
+		return countryName;
+	}
+	/**
+	 * @return the stateName
+	 */
+	public String getStateName() {
+		return stateName;
+	}
+	/**
+	 * @return the cityName
+	 */
+	public String getCityName() {
+		return cityName;
+	}
+	/**
+	 * @param professionName the professionName to set
+	 */
+	public void setProfessionName(String professionName) {
+		this.professionName = professionName;
+	}
+	/**
+	 * @param countryName the countryName to set
+	 */
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
+	}
+	/**
+	 * @param stateName the stateName to set
+	 */
+	public void setStateName(String stateName) {
+		this.stateName = stateName;
+	}
+	/**
+	 * @param cityName the cityName to set
+	 */
+	public void setCityName(String cityName) {
+		this.cityName = cityName;
+	}
 	
 	/**
 	 * @return the addressId
@@ -128,18 +180,7 @@ public class MemberDTO {
 	public void setIsNew(String isNew) {
 		this.isNew = isNew;
 	}
-	/**
-	 * @return the counter
-	 */
-	public int getCounter() {
-		return counter;
-	}
-	/**
-	 * @param counter the counter to set
-	 */
-	public void setCounter(int counter) {
-		this.counter = counter;
-	}
+
 	/**
 	 * @return the memberId
 	 */

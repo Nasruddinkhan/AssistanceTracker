@@ -85,5 +85,9 @@
 	 * '10', 'color' : '#ffffff' }); $('#resultLoading .bg').height('100%');
 	 * $('#resultLoading').fadeIn(500); $('body').css('cursor', 'wait'); }
 	 */
-
+	viewMemebers =function(memberId){
+		$('#modal-default').modal('show');
+		alert('viewMemebers'+memberId);
+		$('#viewmember_id').html(memberId);
+	}
 })();

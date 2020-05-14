@@ -23,7 +23,6 @@
 						class="fa fa fa-medium	 text-green"></i>Masters </a></li>
 			</ul>
 		</li>
-
 		<li class="treeview"><a href="#"> <i
 				class="fa fa-cloud-download"></i><span>Receive</span></a></li>
 		<li class="treeview"><a href="#"> <i

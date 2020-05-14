@@ -318,13 +318,15 @@ position:absolute;
 	<!-- AdminLTE for demo purposes -->
 	<script
 		src="${pageContext.request.contextPath}/resources/dist/js/demo.js"></script>
-	<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+	
 	
 <%--   <script src="${pageContext.request.contextPath}/resources/js/jquery-ui.js"></script>
    --%>
 	<script>
 		var myContextPath = "${pageContext.request.contextPath}"
 	</script>
+		<script src="${pageContext.request.contextPath}/resources/js/common.js"></script>
+	
 	<!-- Page script -->
 	<script>
 		$(function() {
@@ -365,10 +367,10 @@ position:absolute;
 				let url = "/common/get/" + city + "/city.do";
 				ajaxGetCall(url, 'pincodeList')
 			});
-			 $(".memberiframe").fancybox({
-			      type: 'iframe'
-			 });
+			
 		});
+		 
+	
 	</script>
 </body>
 </html>

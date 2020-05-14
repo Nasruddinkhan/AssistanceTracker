@@ -8,6 +8,7 @@ package com.mypractice.assistancetracker.service;
 import java.util.List;
 
 import com.mypractice.assistancetracker.dto.CommonDropDown;
+import com.mypractice.assistancetracker.dto.MemberDTO;
 
 /**
  * @author nasru
@@ -32,5 +33,11 @@ public interface CommonService {
 	 * @return
 	 */
 	String getPincode(String cityId);
+
+	/**
+	 * @param memberID
+	 * @return
+	 */
+	MemberDTO getMember(String memberID);
 
 }

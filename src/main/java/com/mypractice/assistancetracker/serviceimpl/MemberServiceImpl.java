@@ -28,7 +28,11 @@ import com.mypractice.assistancetracker.dto.MemberDTO;
 import com.mypractice.assistancetracker.dto.ProfessionDTO;
 import com.mypractice.assistancetracker.model.Address;
 import com.mypractice.assistancetracker.model.Authorities;
+import com.mypractice.assistancetracker.model.City;
+import com.mypractice.assistancetracker.model.Country;
+import com.mypractice.assistancetracker.model.PinCode;
 import com.mypractice.assistancetracker.model.Profession;
+import com.mypractice.assistancetracker.model.State;
 import com.mypractice.assistancetracker.model.User;
 import com.mypractice.assistancetracker.service.MemberService;
 import com.mypractice.assistancetracker.service.ProfessionService;
@@ -104,6 +108,7 @@ public class MemberServiceImpl implements MemberService {
 		user.setActive(true);
 		User loggedUser= memberDao.editMember(loginUser);
 		user.setUsers(loggedUser);
+		user.setCreateDateTime(memberDTO.getCreateDateTime());
 		memberDao.saveMember(user);
 	}
 	@Override
@@ -160,15 +165,24 @@ public class MemberServiceImpl implements MemberService {
 			dto.setAddressId(address.getAddressId());
 			dto.setAddress1(address.getAddress1());
 			dto.setAddress2(address.getAddress2());
-			dto.setCountry(address.getCountry().getCountryCode());
-			dto.setCity(address.getCity().getCityCode());
-			dto.setPinCode(address.getPinCode().getPinCode());
-			dto.setState(address.getState().getStateCode());
+			Country country = address.getCountry();
+			dto.setCountry(country.getCountryCode());
+			dto.setCountryName(country.getCountryName());
+			City city = address.getCity();
+			dto.setCity(city.getCityCode());
+			dto.setCityName(city.getCityName());
+			PinCode pincode = address.getPinCode();
+			dto.setPinCode(pincode.getPinCode());
+			State state = address.getState();
+			dto.setState(state.getStateCode());
+			dto.setStateName(state.getStateName());
 			dto.setStreet(address.getStreet());
 		}
 		Profession profession =  user.getProfession();
-		if(!isEmptyObject(profession)) 
+		if(!isEmptyObject(profession)) {
 			dto.setProfession(profession.getProfessionId().toString());
+			dto.setProfessionName(profession.getProfessionName());
+		}
 		dto.setUpdateDateTime(user.getUpdateDateTime());
 		dto.setCreateDateTime(user.getCreateDateTime());
 		dto.setNickName(user.getNickName());
